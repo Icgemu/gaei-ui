@@ -6,7 +6,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const config = {
     entry: [
-        'webpack/hot/dev-server',
+      'webpack-dev-server/client?http://0.0.0.0:3000',
+       'webpack/hot/dev-server',
         path.join(__dirname, 'src/components/index/index')
     ],
     output: {
@@ -30,7 +31,6 @@ const config = {
     ],
     module: {
         loaders: [
-
             {
                 test: /\.js$/,
                 loaders: [
