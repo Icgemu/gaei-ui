@@ -11,7 +11,7 @@ const config = {
         path.join(__dirname, 'src/components/index/index')
     ],
     output: {
-        publicPath: 'http://127.0.0.1:3000/',
+        publicPath: '/build',
         path: path.resolve(__dirname, 'build'),
         filename: 'bundle.js',
     },
