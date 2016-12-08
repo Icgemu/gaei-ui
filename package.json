@@ -62,7 +62,8 @@
     "mocha": "^2.5.3",
     "output-file-sync": "^1.1.1",
     "postcss-loader": "^0.9.1",
-    "react-hot-loader": "^1.3.0",
+    "react-hot-lo
+    ader": "^1.3.0",
     "react-router": "2.0.1",
     "rimraf": "^2.5.2",
     "rsuite-form": "0.1.6",
