@@ -5,13 +5,16 @@ const HtmlwebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const config = {
+    resolve: {
+      extensions: ['', '.js', '.jsx']
+    },
     entry: [
       'webpack-dev-server/client?http://0.0.0.0:3000',
        'webpack/hot/dev-server',
         path.join(__dirname, 'src/components/index/index')
     ],
     output: {
-        publicPath: '/build',
+        publicPath: '/build/',
         path: path.resolve(__dirname, 'build'),
         filename: 'bundle.js',
     },
@@ -32,7 +35,7 @@ const config = {
     module: {
         loaders: [
             {
-                test: /\.js$/,
+                test: /\.jsx$/,
                 loaders: [
                     'react-hot',
                     'babel?babelrc'
@@ -43,9 +46,20 @@ const config = {
                 loader: ExtractTextPlugin.extract('style-loader', 'css-loader!less-loader')
             },
             {
-                test: /\.(jpg|png)$/,
-                loader: 'url?limit=8192'
-            }
+                // 图片加载器，雷同file-loader，更适合图片，可以将较小的图片转成base64，减少http请求
+                // 如下配置，将小于8192byte的图片转成base64码
+                test: /\.(png|jpg|gif)$/,
+                loader: 'url?limit=8192&name=./img/[hash].[ext]',
+            },
+            {
+                test: /\.css$/,
+                loader: ExtractTextPlugin
+                    .extract('css?minimize&-autoprefixer!postcss')
+            },
+            {
+               test: /\.(woff|svg|eot|ttf)\??.*$/,
+               loader: "file-loader?&name=./font/[hash].[ext]"
+           }
         ]
     }
 };
