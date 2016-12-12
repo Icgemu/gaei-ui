@@ -1,6 +1,7 @@
 import React from 'react';
 import Nav from './Nav';
 import Logo from './Logo';
+import Navbar from './Navbar';
 
 class TopHeader extends React.Component {
     constructor(props) {
@@ -13,6 +14,7 @@ class TopHeader extends React.Component {
         <header id="bjui-header">
             <Logo/>
             <Nav/>
+            <Navbar/>
         </header>
       );
     }

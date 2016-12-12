@@ -27,7 +27,7 @@ const config = {
         new HtmlwebpackPlugin({
             title: 'gaei-ui dev',
             filename: 'index.html',
-            template: 'src/components/index/index.html',
+            template: 'html-withimg-loader!src/components/index/index.html',
             inject: true,
             hash: true
         }),

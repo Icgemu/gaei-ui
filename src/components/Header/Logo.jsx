@@ -1,4 +1,5 @@
 import React from 'react';
+import gaei from './gaei.png';
 
 class Logo extends React.Component {
     constructor(props) {
@@ -8,11 +9,11 @@ class Logo extends React.Component {
 
     render() {
       return (
-        <div class="bjui-navbar-header">
-            <button type="button" class="bjui-navbar-toggle btn-default" data-toggle="collapse" data-target="#bjui-navbar-collapse">
-              <i class="fa fa-bars"></i>
+        <div className="bjui-navbar-header">
+            <button type="button" className="bjui-navbar-toggle btn-default" data-toggle="collapse" data-target="#bjui-navbar-collapse">
+              <i className="fa fa-bars"></i>
             </button>
-            <a class="bjui-navbar-logo" href="#"><img src="images/logo.png"/></a>
+            <a className="bjui-navbar-logo" href="#"><img src={gaei} style={{height:'40px'}}/></a>
         </div>
       );
     }
