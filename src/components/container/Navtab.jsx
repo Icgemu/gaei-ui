@@ -24,9 +24,7 @@ class Navtab extends React.Component {
             </ul>
             <div className="navtab-panel tabsPageContent">
                 <div className="navtabPage unitBox">
-                    <div className="bjui-pageContent" style={{background:'#FFF'}}>
-                        Loading...
-                    </div>
+                      {this.props.children}
                 </div>
             </div>
         </div>

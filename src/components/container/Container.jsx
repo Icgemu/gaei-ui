@@ -1,7 +1,7 @@
 import React from 'react';
 import Leftbar from './Leftbar';
 import Navtab from './Navtab';
-
+import Form1 from '../pages/Form1';
 class Container extends React.Component {
     constructor(props) {
         super(props);
@@ -12,7 +12,9 @@ class Container extends React.Component {
       return (
         <div id="bjui-container" className="clearfix" style={{height:'500px'}}>
           <Leftbar/>
-          <Navtab/>
+          <Navtab>
+            <Form1/>
+          </Navtab>
         </div>
       );
     }

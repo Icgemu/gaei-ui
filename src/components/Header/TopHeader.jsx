@@ -10,8 +10,10 @@ class TopHeader extends React.Component {
     }
 
     render() {
+      let {height} = this.props;
+      let style = {height};
       return (
-        <header id="bjui-header">
+        <header id="bjui-header" style={style}>
             <Logo/>
             <Nav/>
             <Navbar/>
