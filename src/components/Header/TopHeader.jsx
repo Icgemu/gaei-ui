@@ -11,7 +11,7 @@ class TopHeader extends React.Component {
 
     render() {
       let {height} = this.props;
-      let style = {height};
+      let style = {height:height+'px'};
       return (
         <header id="bjui-header" style={style}>
             <Logo/>

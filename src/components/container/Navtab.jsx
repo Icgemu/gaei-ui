@@ -7,8 +7,9 @@ class Navtab extends React.Component {
     }
 
     render() {
+      let {width,height} = this.props;
       return (
-        <div id="bjui-navtab" className="tabsPage" style={{width:'500px'}}>
+        <div id="bjui-navtab" className="tabsPage" style={{width:width+'px',height:height+'px'}}>
             <div className="tabsPageHeader">
                 <div className="tabsPageHeaderContent">
                     <ul className="navtab-tab nav nav-tabs">
@@ -22,7 +23,7 @@ class Navtab extends React.Component {
             <ul className="tabsMoreList">
                 <li><a href="javascript:;">#maintab#</a></li>
             </ul>
-            <div className="navtab-panel tabsPageContent">
+            <div className="navtab-panel tabsPageContent" style={{width:width+'px',height:(height-26)+'px'}}>
                 <div className="navtabPage unitBox">
                       {this.props.children}
                 </div>

@@ -9,11 +9,13 @@ class Container extends React.Component {
     }
 
     render() {
+      let {sidebar,height,width} = this.props;
       return (
-        <div id="bjui-container" className="clearfix" style={{height:'500px'}}>
-          <Leftbar/>
-          <Navtab>
-            <Form1/>
+        <div id="bjui-container" className="clearfix"
+          style={{height:height+'px',width:width+'px'}}>
+          <Leftbar width={sidebar} height={height}>{this.props.left}</Leftbar>
+          <Navtab  width={width-sidebar-6} height={height}>
+            {this.props.children}
           </Navtab>
         </div>
       );
