@@ -10,19 +10,14 @@ let app = <App topHeight='70' footerHeight='25' sidebarW='200'/>;
 ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/" component={App}>
-      <IndexRoute component={Tab1}/>
-      <Route path="/t1" component={Tab1}>
-        <IndexRoute component={Form1}/>
-        <Route path="/t1/n1" component={Form1}/>
-        <Route path="/t1/n2" component={Form1}/>
-        <Route path="/t1/n3" component={Form2}/>
-      </Route>
-      <Route path="/t2" component={Tab2}>
-        <IndexRoute component={Form2}/>
-        <Route path="/t2/n4" component={Form1}/>
-        <Route path="/t2/n5" component={Form1}/>
-        <Route path="/t2/n6" component={Form2}/>
-      </Route>
+      <IndexRoute components={side:Tab1,page:Form1}/>
+      <Route path="/t1/n1" components={side:Tab1,page:Form1}/>
+      <Route path="/t1/n2" components={side:Tab1,page:Form1}/>
+      <Route path="/t1/n3" components={side:Tab1,page:Form2}/>
+
+      <Route path="/t2/n4" components={side:Tab2,page:Form2}/>
+      <Route path="/t2/n4" components={side:Tab2,page:Form2}/>
+      <Route path="/t2/n4" components={side:Tab2,page:Form1}/>
     </Route>
   </Router>
 ), document.body);

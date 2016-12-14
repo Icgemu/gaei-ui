@@ -38,7 +38,7 @@ class App extends React.Component {
       return (
         <div id="bjui-window">
           <TopHeader height={topHeight}/>
-          <Container left={this.props.children} sidebar={sidebarW} height={this.state.containerH} width={this.state.containerW}/>
+          <Container left={this.props.side} page={this..page} sidebar={sidebarW} height={this.state.containerH} width={this.state.containerW}/>
           <Footer height={footerHeight}/>
         </div>
       );

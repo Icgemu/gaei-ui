@@ -15,7 +15,7 @@ class Container extends React.Component {
           style={{height:height+'px',width:width+'px'}}>
           <Leftbar width={sidebar} height={height}>{this.props.left}</Leftbar>
           <Navtab  width={width-sidebar-6} height={height}>
-            {this.props.children}
+            {this.props.page}
           </Navtab>
         </div>
       );
