@@ -17,7 +17,6 @@ class Tab2 extends React.Component {
                 <li><Link to="/t2/n5">普通表格5</Link></li>
                 <li><Link to="/t2/n6">普通表格6</Link></li>
             </ul>
-              {this.props.children}
         </div>
       );
     }

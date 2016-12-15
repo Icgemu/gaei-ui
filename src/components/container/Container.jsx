@@ -14,8 +14,7 @@ class Container extends React.Component {
         <div id="bjui-container" className="clearfix"
           style={{height:height+'px',width:width+'px'}}>
           <Leftbar width={sidebar} height={height}>{this.props.left}</Leftbar>
-          <Navtab  width={width-sidebar-6} height={height}>
-            {this.props.page}
+          <Navtab  width={width-sidebar-6} height={height} page={this.props.page} title={this.props.title}>
           </Navtab>
         </div>
       );

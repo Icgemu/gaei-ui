@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
 
 class Tab1 extends React.Component {
     constructor(props) {
@@ -17,7 +17,6 @@ class Tab1 extends React.Component {
                 <li><Link to="/t1/n3">普通表格2</Link></li>
                 <li><Link to="/t1/n2">普通表格3</Link></li>
             </ul>
-            {this.props.children}
         </div>
       );
     }

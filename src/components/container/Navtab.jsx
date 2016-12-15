@@ -13,7 +13,11 @@ class Navtab extends React.Component {
             <div className="tabsPageHeader">
                 <div className="tabsPageHeaderContent">
                     <ul className="navtab-tab nav nav-tabs">
-                        <li data-url="index_layout.html" data-faicon="home"><a href="javascript:;"><span><i className="fa fa-home"></i> #maintab#</span></a></li>
+                        <li data-url="index_layout.html" data-faicon="home">
+                          <a href="javascript:;">
+                          <span><i className="fa fa-home"></i> {this.props.title}</span>
+                          </a>
+                        </li>
                     </ul>
                 </div>
                 <div className="tabsLeft"><i className="fa fa-angle-double-left"></i></div>
@@ -21,11 +25,11 @@ class Navtab extends React.Component {
                 <div className="tabsMore"><i className="fa fa-angle-double-down"></i></div>
             </div>
             <ul className="tabsMoreList">
-                <li><a href="javascript:;">#maintab#</a></li>
+                <li><a href="javascript:;">{this.props.title}</a></li>
             </ul>
             <div className="navtab-panel tabsPageContent" style={{width:width+'px',height:(height-26)+'px'}}>
                 <div className="navtabPage unitBox">
-                      {this.props.children}
+                      {this.props.page}
                 </div>
             </div>
         </div>

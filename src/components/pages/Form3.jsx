@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router';
-class Form1 extends React.Component {
+
+class Form3 extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -12,7 +12,7 @@ class Form1 extends React.Component {
             <form action="ajaxDone1.html" id="j_form_form" className="pageForm" data-toggle="validate">
                 <div style={{margin:'15px auto 0',width:'800px'}}>
                     <fieldset>
-                        <legend>文本框1</legend>
+                        <legend>文本框3</legend>
                         <table className="table table-condensed table-hover">
                             <thead>
                                 <tr>
@@ -77,20 +77,14 @@ class Form1 extends React.Component {
                                         <div className="alert alert-warning form-inline"><i className="fa fa-warning"></i> <strong>Class说明：</strong>JS会为text或textarea自动加上Class[form-control]。</div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td colspan="3">
-                                      <Link to="/t1/n1/i1">Go</Link>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </fieldset>
                 </div>
             </form>
-            {this.props.children}
         </div>
       );
     }
 }
 
-export default Form1;
+export default Form3;

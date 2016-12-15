@@ -10,7 +10,7 @@ class Form2 extends React.Component {
       return (
         <div className="bjui-pageContent">
             <form action="ajaxDone1.html" id="j_form_form" className="pageForm" data-toggle="validate">
-                <div style="margin:15px auto 0; width:800px;">
+                <div style={{margin:'15px auto 0',width:'800px'}}>
                     <fieldset>
                         <legend>文本框2</legend>
                         <table className="table table-condensed table-hover">
@@ -83,13 +83,8 @@ class Form2 extends React.Component {
                 </div>
             </form>
         </div>
-        <div className="bjui-pageFooter">
-            <ul>
-                <li><button type="button" className="btn-close" data-icon="close">关闭</button></li>
-            </ul>
-        </div>
       );
     }
 }
 
-export default Form1;
+export default Form2;
