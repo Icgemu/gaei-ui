@@ -29,7 +29,7 @@ class Navtab extends React.Component {
             </ul>
             <div className="navtab-panel tabsPageContent" style={{width:width+'px',height:(height-26)+'px'}}>
                 <div className="navtabPage unitBox">
-                      {this.props.page}
+                      {this.props.children}
                 </div>
             </div>
         </div>

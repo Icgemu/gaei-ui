@@ -1,25 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
+import Tabs from './Tabs';
 
-class Tab2 extends React.Component {
+class Tabs2 extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {links:[
+          {path:'/t2/n1',title:'普通表格4'},
+          {path:'/t2/n2',title:'普通表格5'},
+          {path:'/t2/n3',title:'普通表格6'}
+        ]};
     }
 
     render() {
-      let {height} = this.props;
-      let style = {height};
+
       return (
-        <div className="items" data-noinit="true">
-            <ul className="menu-items" data-faicon="table">
-                <li><Link to="/t2/n4">普通表格4</Link></li>
-                <li><Link to="/t2/n5">普通表格5</Link></li>
-                <li><Link to="/t2/n6">普通表格6</Link></li>
-            </ul>
-        </div>
+        <Tabs links={this.state.links} {...this.props}/>
       );
     }
 }
 
-export default Tab2;
+export default Tabs2;

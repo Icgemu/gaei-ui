@@ -15,3 +15,17 @@ export const delTab = (id) => {
     id
   }
 }
+
+export const windowInfo = () => {
+  let ww = $(window).width();
+  let hh = $(window).height();
+
+  let th = $('#bjui-header').height();
+  let fh = $('#bjui-footer').height();
+  return {
+    ww,
+    hh,
+    th,
+    fh
+  }
+}

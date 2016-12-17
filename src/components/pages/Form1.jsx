@@ -79,7 +79,7 @@ class Form1 extends React.Component {
                                 </tr>
                                 <tr>
                                     <td colspan="3">
-                                      <Link to="/t1/n1/i1">Go</Link>
+                                      <Link to="/t3/i1">Go</Link>
                                     </td>
                                 </tr>
                             </tbody>
