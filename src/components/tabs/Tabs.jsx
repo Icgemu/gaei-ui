@@ -4,16 +4,16 @@ import { Link } from 'react-router';
 class Tabs extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {links:[
-          {path:'/t1/n1',title:'普通表格1'},
-          {path:'/t1/n2',title:'普通表格2'},
-          {path:'/t1/n3',title:'普通表格3'}
-        ]};
         this.clickLink = this.clickLink.bind(this);
     }
 
     clickLink(e){
-      this.props.onLinkClick(e.target.title);
+      let id = e.target.id;
+      let link = this.props.links.filter(item =>{
+       return  item.id === id;
+     })[0];
+
+      this.props.onLinkClick(link);
     }
 
     render() {
@@ -21,7 +21,7 @@ class Tabs extends React.Component {
       let style = {height};
       let links = this.props.links.map((item,i) => {
         return (
-          <li><Link to={item.path} title={item.title} onClick={this.clickLink}>{item.title}</Link></li>
+          <li><Link to={item.path} id={item.id} title={item.title} onClick={this.clickLink}>{item.title}</Link></li>
         )
       })
       return (

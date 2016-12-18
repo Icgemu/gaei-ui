@@ -4,7 +4,7 @@ const tab = (state = {}, action) => {
       return {
         id: action.id,
         title: action.title,
-        component: action.component
+        path: action.path
       }
     case 'DEL_TAB':
       if (state.id !== action.id) {

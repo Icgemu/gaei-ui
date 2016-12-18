@@ -1,5 +1,6 @@
 import React from 'react';
 import Container from '../Container/Container';
+import StatefulContainer from '../Container/StatefulContainer';
 import Tabs1 from '../tabs/Tabs1';
 class Container1 extends React.Component {
     constructor(props) {
@@ -11,9 +12,9 @@ class Container1 extends React.Component {
     render() {
 
       return (
-        <Container left={<Tabs1/>}>
+        <StatefulContainer left={<Tabs1/>}>
           {this.props.children}
-        </Container>
+        </StatefulContainer>
       );
     }
 }

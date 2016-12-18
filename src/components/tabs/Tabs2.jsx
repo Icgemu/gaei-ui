@@ -6,9 +6,9 @@ class Tabs2 extends React.Component {
     constructor(props) {
         super(props);
         this.state = {links:[
-          {path:'/t2/n1',title:'普通表格4'},
-          {path:'/t2/n2',title:'普通表格5'},
-          {path:'/t2/n3',title:'普通表格6'}
+          {id:"id3",path:'/t2/n1',title:'普通表格4'},
+          {id:"id4",path:'/t2/n2',title:'普通表格5'},
+          {id:"id5",path:'/t2/n3',title:'普通表格6'}
         ]};
     }
 

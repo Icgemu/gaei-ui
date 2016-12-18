@@ -1,10 +1,10 @@
 
-export const addTab = (id,title,component) => {
+export const addTab = ({id,path,title}) => {
   return {
     type: 'ADD_TAB',
     id,
     title,
-    component
+    path
   }
 }
 
