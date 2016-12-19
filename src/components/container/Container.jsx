@@ -24,24 +24,34 @@ class Container extends React.Component {
 
       this.setState({height,width,sidebar});
     }
-    // onLinkClick(link){
-    //   let tabs = this.state.tabs;
-    //   tabs.push(link);
-    //   this.setState({tabs});
-    // }
+
+    delTab(e){
+      let id = e.target.id;
+      this.props.onDelete(id);
+    }
+
+    activeTab(e,item){
+      let id = item.id;
+      this.props.activeTab(id);
+    }
+
     render() {
       let {height,width,sidebar} = this.state;
-
-      let lis = this.props.tabs?this.props.tabs.map((item,i) =>{
+      let ctabs = this.props.tabs;
+      let lis = ctabs.map((item,i) =>{
+        let span ;
+        if(i !== 0){
+          span = <span id={item.id} className="close" onClick={e =>{this.delTab(e)}}>×</span>;
+        }
         return (
-          <li data-url={item.url} data-faicon="home">
+          <li className={item.active?'active':''}>
             <a href={`#${item.path}`}>
-            <span><i className="fa fa-home"></i> {item.title}</span>
+            <span onClick={e=>{this.activeTab(e,item)}}><i className="fa fa-home"></i> {item.title}</span>
             </a>
-            <span className="close">×</span>
+            {span}
           </li>
         )
-      }):undefined;
+      });
 
       return (
         <div id="bjui-container" className="clearfix"
@@ -57,11 +67,6 @@ class Container extends React.Component {
               <div className="tabsPageHeader">
                   <div className="tabsPageHeaderContent">
                       <ul className="navtab-tab nav nav-tabs">
-                          <li>
-                            <a href="#/">
-                            <span><i className="fa fa-home"></i> {this.props.title|| '首页'}</span>
-                            </a>
-                          </li>
                           {lis}
                       </ul>
                   </div>

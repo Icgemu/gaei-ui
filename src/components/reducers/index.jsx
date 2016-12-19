@@ -16,6 +16,14 @@ export const delTab = (id) => {
   }
 }
 
+export const activeTab = (id) => {
+  return {
+    type: 'ACTIVE_TAB',
+    id
+  }
+}
+
+
 export const windowInfo = () => {
   let ww = $(window).width();
   let hh = $(window).height();

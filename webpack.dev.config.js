@@ -52,13 +52,16 @@ const config = {
             {
                 test: /\.css$/,
                 loader: ExtractTextPlugin
-                    .extract('css?minimize&-autoprefixer!postcss')
+                    .extract('style-loader','css-loader!postcss-loader')
             },
             {
                test: /\.(woff|svg|eot|ttf)\??.*$/,
                loader: "file-loader?&name=./font/[hash].[ext]"
            }
         ]
+    },
+    postcss: function () {
+        return [require('autoprefixer'), require('precss')];
     }
 };
 
