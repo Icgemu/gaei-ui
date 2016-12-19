@@ -3,7 +3,7 @@ import Container from './Container';
 import {addTab,delTab,activeTab} from '../reducers/index';
 
 const mapStateToProps = (state,ownProps) => {
-  console.log("mapStateToProps=>"+JSON.stringify(state));
+  // console.log("mapStateToProps=>"+JSON.stringify(state));
   let ctabs = state.tabs;
   if(ctabs.length===0 || ctabs[0].id !== 'home'){
     ctabs = [{
