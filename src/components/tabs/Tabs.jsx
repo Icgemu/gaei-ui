@@ -4,16 +4,11 @@ import { Link } from 'react-router';
 class Tabs extends React.Component {
     constructor(props) {
         super(props);
-        this.clickLink = this.clickLink.bind(this);
+        //this.clickLink = this.clickLink.bind(this);
     }
 
-    clickLink(e){
-      let id = e.target.id;
-      let link = this.props.links.filter(item =>{
-       return  item.id === id;
-     })[0];
-
-      this.props.onLinkClick(link);
+    clickLink(e,item){
+      this.props.onLinkClick(item);
     }
 
     render() {
@@ -21,7 +16,7 @@ class Tabs extends React.Component {
       let style = {height};
       let links = this.props.links.map((item,i) => {
         return (
-          <li><Link to={item.path} id={item.id} title={item.title} onClick={this.clickLink}>{item.title}</Link></li>
+          <li><Link to={item.path} id={item.id} title={item.title} onClick={e=>{this.clickLink(e,item)}}>{item.title}</Link></li>
         )
       })
       return (
