@@ -28,6 +28,7 @@ ReactDOM.render((
   <Provider store={store}>
   <Router history={hashHistory}>
     <Route path="/" component={App}>
+     <IndexRoute component={Page1}/>
       <Route path="t1" component={Container1}>
         <Route path="n1" component={Page1} />
         <Route path="n2" component={Page2} />
@@ -38,7 +39,6 @@ ReactDOM.render((
         <Route path="n2" component={Page5} />
         <Route path="n3" component={Page6} />
       </Route>
-      <Redirect from="/" to="/t1/n1"/>
     </Route>
   </Router>
   </Provider>

@@ -25,13 +25,27 @@ class Container extends React.Component {
       this.setState({height,width,sidebar});
     }
 
-    delTab(e){
-      let id = e.target.id;
+    delTab(e,item){
+      let id = item.id;
+      let tabs = this.props.tabs.filter(t =>{return t.id != item.id});
+      let actives = tabs.filter(t =>{return t.active});
+
+      if(actives.length === 0){
+        let path = tabs[tabs.length-1].path;
+        if(tabs[0].id !== 'home'){
+          this.props.router.push('/');
+        }else{
+            this.props.router.push(path);
+        }
+      }
       this.props.onDelete(id);
+
+      //this.props.activeTab(id);
     }
 
     activeTab(e,item){
       let id = item.id;
+
       this.props.activeTab(id);
     }
 
@@ -41,8 +55,12 @@ class Container extends React.Component {
       let lis = ctabs.map((item,i) =>{
         let span ;
         if(i !== 0){
-          span = <span id={item.id} className="close" onClick={e =>{this.delTab(e)}}>×</span>;
+          span = <span id={item.id} className="close" onClick={e =>{this.delTab(e,item)}}>×</span>;
         }
+        // if(item.active && item.path !== this.props.location.pathname){
+        //   console.log("current:"+item.path+",location:"+this.props.location.pathname);
+        //   this.props.router.push(item.path);
+        // }
         return (
           <li className={item.active?'active':''}>
             <a href={`#${item.path}`}>

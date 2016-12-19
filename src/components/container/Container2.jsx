@@ -12,7 +12,7 @@ class Container2 extends React.Component {
     render() {
 
       return (
-        <StatefulContainer left={<Tabs2/>}>
+        <StatefulContainer left={<Tabs2/>} {...this.props}>
             {this.props.children}
         </StatefulContainer>
       );

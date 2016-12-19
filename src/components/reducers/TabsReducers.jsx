@@ -42,7 +42,7 @@ const tabs = (state = {}, action) => {
           }
           return item;
         })
-        if(!active){
+        if(activeItem.length ===0 || (!active && activeItem[0].id !=='home') ){
           tabs= [
             {
               id:'home',

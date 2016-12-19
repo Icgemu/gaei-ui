@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Container from './Container';
 import {addTab,delTab,activeTab} from '../reducers/index';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state,ownProps) => {
   console.log("mapStateToProps=>"+JSON.stringify(state));
   let ctabs = state.tabs;
   if(ctabs.length===0 || ctabs[0].id !== 'home'){
@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
       id:'home',
       path:'/',
       title:"首页",
-      active:true
+      active:false
     },...state.tabs];
   }
 
@@ -23,6 +23,7 @@ const mapStateToProps = (state) => {
   if(activeItem.length>1){
     activeItem[0].active = false;
   }
+
   return {
     tabs: [...ctabs]
   }
