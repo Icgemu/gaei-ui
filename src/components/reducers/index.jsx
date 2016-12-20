@@ -23,6 +23,19 @@ export const activeTab = (id) => {
   }
 }
 
+export const activeLink = (id) => {
+  return {
+    type: 'ACTIVE_LINK',
+    id
+  }
+}
+
+export const activeUrl = (id) => {
+  return {
+    type: 'ACTIVE_URL',
+    id
+  }
+}
 
 export const windowInfo = () => {
   let ww = $(window).width();

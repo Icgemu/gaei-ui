@@ -1,23 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import {addTab} from '../reducers/index';
+import {activeLink} from '../reducers/index';
 class Navbar extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {links:[
-          {id:"header1",path:"/t1",title:"导航1"},
-          {id:"header2",path:"/t2",title:"导航2"}
-        ],currentActive:{id:"header1",path:"/t1",title:"导航1"}}
+        this.state = {}
     }
     onLinkClick(e,item){
-      this.props.onLinkClick(item);
-      this.setState({currentActive:item});
+      this.props.onLinkClick(item.id);
     }
     render() {
 
-      let lis = this.state.links.map((item,i)=>{
-        let active = item.id === this.state.currentActive.id;
+      let lis = this.props.links.map((item,i)=>{
+        let active = item.id === this.props.currentActive.id;
         return (
           <li className={active?'active':""}>
             <Link to={item.path} onClick={e=>{this.onLinkClick(e,item)}}><i className="fa fa-check-square-o"></i> {item.title}</Link>
@@ -40,13 +36,19 @@ class Navbar extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onLinkClick: (link) => {
-      dispatch(addTab(link))
+    onLinkClick: (id) => {
+      dispatch(activeLink(id))
     }
   }
 }
-
+const mapStateToProps = (state,ownProps) => {
+  return {
+    links:state.links.links,
+    currentActive:state.links.currentActive
+  }
+}
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Navbar)
+// export default Navbar

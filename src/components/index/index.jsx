@@ -16,9 +16,18 @@ import Page6 from '../pages/Page6';
 import Form1 from '../pages/Form1';
 import Form2 from '../pages/Form2';
 import TabsRoute from '../App/TabsRoute';
-import {addTab} from '../reducers/index';
+import {addTab,activeUrl} from '../reducers/index';
 
-let store = createStore(tabs);
+let store = createStore(tabs,{
+  links:{
+    links:[
+      {id:"header1",path:"/t1",title:"导航1"},
+      {id:"header2",path:"/t2",title:"导航2"}
+    ],
+    currentActive:{id:"header1",path:"/t1",title:"导航1"}
+  },
+  tabs:[]
+});
 
 // hashHistory.listen(function (action) {
 //   // console.log("action=>"+JSON.stringify(action));
@@ -30,10 +39,11 @@ let store = createStore(tabs);
 // })
 
 const onRouteEnter = function(e,item){
-  console.log("enter:"+JSON.stringify(e));
+  console.log("enter:"+e.location.pathname);
   let path = e.location.pathname;
   item = {path,id:item.id,title:item.title};
   store.dispatch(addTab(item));
+  store.dispatch(activeUrl(path));
 }
 
 ReactDOM.render((

@@ -34,21 +34,22 @@ class Container extends React.Component {
 
       if(actives.length === 0){
         let path = tabs[tabs.length-1].path;
-        if(tabs[0].id !== 'home'){
-          this.props.router.push('/');
-        }else{
-            this.props.router.push(path);
-        }
+        // if(tabs[0].id !== 'home'){
+        //   this.props.router.push('/');
+        // }else{
+        //     this.props.router.push(path);
+        // }
+        this.props.router.push(path);
       }
       this.props.onDelete(id);
 
       //this.props.activeTab(id);
     }
 
-    activeTab(e,item){
-      let id = item.id;
-      this.props.activeTab(id);
-    }
+    // activeTab(e,item){
+    //   let id = item.id;
+    //   this.props.activeTab(id);
+    // }
 
     render() {
       let {height,width,sidebar} = this.state;
@@ -65,7 +66,7 @@ class Container extends React.Component {
         return (
           <li className={item.active?'active':''}>
             <a href={`#${item.path}`}>
-            <span onClick={e=>{this.activeTab(e,item)}}><i className="fa fa-home"></i> {item.title}</span>
+            <span><i className="fa fa-home"></i> {item.title}</span>
             </a>
             {span}
           </li>
@@ -77,9 +78,7 @@ class Container extends React.Component {
           style={{height:height+'px',width:width+'px'}}>
 
           <Leftbar width={sidebar} height={height}>
-            {this.props.left && React.cloneElement(this.props.left, {
-             onLinkClick:this.props.onLinkClick
-            })}
+            {this.props.left}
           </Leftbar>
 
           <div id="bjui-navtab" className="tabsPage" style={{width:(width-sidebar-6)+'px',height:height+'px'}}>

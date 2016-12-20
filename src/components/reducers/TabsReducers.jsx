@@ -1,6 +1,7 @@
-const tabs = (state = {}, action) => {
-  if(!state.tabs) state.tabs=[];
-  let tabs = [...state.tabs];
+ import { combineReducers } from 'redux'
+const tabs = (state = [], action) => {
+  //if(!state.tabs) state.tabs=[];
+  let tabs = [...state];
   switch (action.type) {
     case 'ADD_TAB':
       let added = tabs.filter(item=>{return item.id === action.id});
@@ -13,7 +14,7 @@ const tabs = (state = {}, action) => {
           }
           return item;
         });
-        return Object.assign({}, state, {tabs:[...edited]});
+        return [...tabs]
       }else{
         tabs.map(item=>{
           item.active = false;
@@ -27,10 +28,10 @@ const tabs = (state = {}, action) => {
           active:true
         }
       );
-      return Object.assign({}, state, {tabs:[...tabs]});
+      return [...tabs];
     case 'DEL_TAB':
       tabs = tabs.filter(t =>{return t.id != action.id});
-      return  Object.assign({}, state, {tabs:[...tabs]});
+      return  [...tabs];
     case 'ACTIVE_TAB':
         let active = false;
         let activeItem = tabs.map(item=>{
@@ -42,21 +43,36 @@ const tabs = (state = {}, action) => {
           }
           return item;
         })
-        if(activeItem.length ===0 || (!active && activeItem[0].id !=='home') ){
-          tabs= [
-            {
-              id:'home',
-              path:'/',
-              title:"首页",
-              active:true
-            },
-            ...activeItem
-          ]
-        }
-        return  Object.assign({}, state, {tabs:[...tabs]});
+
+        return  [...activeItem];
     default:
       return state
   }
 }
-
-export default tabs
+const links = (state = {}, action) => {
+  switch (action.type) {
+    case 'ACTIVE_LINK':
+      let active1 = state.links.filter(item=>{
+        return item.id === action.id;
+      })[0];
+      return Object.assign({},state,{
+        currentActive:active1
+      });
+    case 'ACTIVE_URL':
+        let active2 = state.links.filter(item=>{
+          return action.id.indexOf(item.path)!=-1;
+        })[0];
+        if(active2.id === state.currentActive.id){
+          return state;
+        }
+        return Object.assign({},state,{
+          currentActive:active2
+        });
+    default:
+      return state
+    }
+}
+export default combineReducers({
+    tabs,
+    links
+});
