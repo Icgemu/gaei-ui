@@ -11,11 +11,13 @@ class Container extends React.Component {
 
     componentDidMount() {
       this.resize();
-
       $(window).resize(this.resize.bind(this));
-
+      // console.log("set Route:"+JSON.stringify(this.props.route))
+      // this.props.router.setRouteLeaveHook(this.props.route, this.routerWillLeave.bind(this))
     }
-
+    // routerWillLeave(nextLocation){
+    //   console.log("current:"+JSON.stringify(this.props.location)+",next:"+JSON.stringify(nextLocation))
+    // }
     resize(){
       let {ww,hh,th,fh} = windowInfo();
       let height = hh - th - fh -6;
@@ -45,7 +47,6 @@ class Container extends React.Component {
 
     activeTab(e,item){
       let id = item.id;
-
       this.props.activeTab(id);
     }
 

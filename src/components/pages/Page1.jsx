@@ -7,7 +7,8 @@ class Page1 extends React.Component {
     }
 
     render() {
-      return <div> 页面1</div>
+      let content = JSON.stringify(this.props)
+      return <div> {content}</div>
     }
 }
 export default Page1
