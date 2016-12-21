@@ -6,10 +6,31 @@ import { connect } from 'react-redux';
 class Modal extends React.Component {
   constructor(props) {
       super(props);
-      this.state = {};
+
+      let {
+        width,
+        height
+      } = props;
+
+      let ww = $(window).width();
+      let hh = $(window).height();
+
+      if(width>ww){width = ww;}
+      if(height>hh){height = hh;}
+
+      let top = parseInt((hh - height )/2);
+      let left = parseInt((ww - width)/2);
+
+      this.state = {width,height,top,left,restore:false};
   }
   maximize(e){
-    this.props.maximize(e);
+    //this.props.maximize(e);
+    console.log("maximize");
+    e.preventDefault();
+    let width = $(window).width();
+    let height = $(window).height();
+    this.setState({width,height,top:0,left:0,restore:true});
+    e.stopPropagation();
   }
   minimize(e){
     this.props.minimize(e);
@@ -18,33 +39,98 @@ class Modal extends React.Component {
     this.props.close(e);
   }
   restore(e){
-    this.props.restore(e);
-  }
-  render() {
+      console.log("restore");
+    e.preventDefault();
     let {
-      id,
-      title,
-      component
+      width,
+      height
     } = this.props;
+
+    let ww = $(window).width();
+    let hh = $(window).height();
+
+    if(width>ww){width = ww;}
+    if(height>hh){height = hh;}
+
+    let top = parseInt((hh - height )/2);
+    let left = parseInt((ww - width)/2);
+
+    this.setState({width,height,top,left,restore:false});
+    e.stopPropagation();
+    //this.props.restore(e);
+  }
+
+  mouseDown(e){
+      console.log("down");
+      let X = e.pageX||e.clientX;
+      let Y = e.pageY||e.clientY;
+      document.onselectstart=function(){return false;}
+      this.setState({down:true,X,Y});
+      e.stopPropagation();
+  }
+  mouseUp(e){
+    console.log("up");
+    this.setState({down:false});
+    document.onselectstart=function(){return true;}
+    e.stopPropagation();
+  }
+  mouseMove(e){
+      if(this.state.down){
+        console.log("PX:"+e.pageX+",Y:"+e.pageY);
+        console.log("CX:"+e.clientX+",Y:"+e.clientY);
+        let X = e.pageX||e.clientX;
+        let Y = e.pageY||e.clientY;
+
+        let left = this.state.left + X - this.state.X;
+        let top  = this.state.top  + Y - this.state.Y;
+        this.setState({X,Y,left,top});
+      }
+      e.stopPropagation();
+  }
+
+  componentDidMount() {
+
+  }
+
+  render() {
+  let {width,height,left,top} = this.state;
+  let {id,title,component} = this.props;
+
+  let restore;
+  if(this.state.restore){
+    restore = (
+      <a className="close" style={{right:'23px'}} onClick={e => {
+          this.restore(e)
+      }} title="恢复">
+          <i className="fa fa-history"></i>
+      </a>
+    )
+  }else{
+      restore = (
+        <a className="close" style={{right:'23px'}} onClick={e => {
+            this.maximize(e)
+        }} title="最大化">
+            <i className="fa fa-plus-circle"></i>
+        </a>
+      )
+  }
   return (
-    <div className="bjui-dialog bjui-dialog-container" style={{top:'150px',left:'300px'}}>
-        <div className="dialogHeader" onselectstart="return false;" oncopy="return false;" onpaste="return false;" oncut="return false;">
+    <div className="bjui-dialog bjui-dialog-container" style={{zIndex:200,top:top+'px',left:left+'px',width:width+'px',height:height+'px'}}>
+        <div className="dialogHeader" onSelectStart={e=>{return false;}}
+          onCopy={e=>{return false}}
+          onPaste={e=>{return false}}
+          onCut={e=>{return false}}
+          onMouseDown={e=>{this.mouseDown(e)}}
+          onMouseMove={e=>{this.mouseMove(e)}}
+          onMouseUp={e=>{this.mouseUp(e)}}
+          >
             <a className="close" onClick={e => {
                 this.close(id)
             }} title="关闭">
                 <i className="fa fa-times-circle"></i>
             </a>
-            <a className="maximize" onClick={e => {
-                this.maximize(id)
-            }} title="最大化">
-                <i className="fa fa-plus-circle"></i>
-            </a>
-            <a className="restore" onClick={e => {
-                this.restore(id)
-            }} title="恢复">
-                <i className="fa fa-history"></i>
-            </a>
-            <a className="minimize" onClick={e => {
+            {restore}
+            <a className="close" style={{right:'42px'}} onClick={e => {
                 this.minimize(id)
             }} title="最小化">
                 <i className="fa fa-minus-circle"></i>
@@ -57,14 +143,6 @@ class Modal extends React.Component {
             </h1>
         </div>
         <div className="dialogContent unitBox">{this.props.component}</div>
-        <div className="resizable_h_l" tar="nw"></div>
-        <div className="resizable_h_r" tar="ne"></div>
-        <div className="resizable_h_c" tar="n"></div>
-        <div className="resizable_c_l" tar="w" style={{height:'100%'}}></div>
-        <div className="resizable_c_r" tar="e" style={{height:'100%'}}></div>
-        <div className="resizable_f_l" tar="sw"></div>
-        <div className="resizable_f_r" tar="se"></div>
-        <div className="resizable_f_c" tar="s"></div>
     </div>
 )
   }

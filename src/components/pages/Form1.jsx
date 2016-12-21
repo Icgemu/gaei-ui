@@ -9,11 +9,13 @@ class Form1 extends React.Component {
     }
 
     render() {
-      let c = <div style={{width:'300px',height:'200px'}}> dialog modal </div>;
+      let c = <div> dialog modal </div>;
       let option = {
         id:'12333',
         title:'test',
-        component:c
+        component:c,
+        width:300,
+        height:200
       }
       let button = <DialogButton option={option} className="btn btn-default"> open dialog</DialogButton>;
       return (
