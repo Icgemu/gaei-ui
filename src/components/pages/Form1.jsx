@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
+import DialogButton from '../dialog/DialogButton';
+
 class Form1 extends React.Component {
     constructor(props) {
         super(props);
@@ -7,6 +9,13 @@ class Form1 extends React.Component {
     }
 
     render() {
+      let c = <div style={{width:'300px',height:'200px'}}> dialog modal </div>;
+      let option = {
+        id:'12333',
+        title:'test',
+        component:c
+      }
+      let button = <DialogButton option={option} className="btn btn-default"> open dialog</DialogButton>;
       return (
         <div className="bjui-pageContent">
             <form action="ajaxDone1.html" id="j_form_form" className="pageForm" data-toggle="validate">
@@ -88,6 +97,7 @@ class Form1 extends React.Component {
                 </div>
             </form>
             {this.props.children}
+            {button}
         </div>
       );
     }

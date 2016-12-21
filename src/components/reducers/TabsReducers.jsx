@@ -72,7 +72,25 @@ const links = (state = {}, action) => {
       return state
     }
 }
+
+const dialog = (state = [], action) => {
+  switch (action.type) {
+    case 'ADD_MODAL':
+      return [...state,action.option];
+    case 'CLOSE_MODAL':
+      return state.filter(e=>{return e.id !== action.id});
+    case 'MINIMIZE_MODAL':
+      return state;
+    case 'MAXIMIZE_MODAL':
+      return state;
+    case 'RESTORE_MODAL':
+      return state;
+    default:
+      return state
+    }
+}
 export default combineReducers({
     tabs,
-    links
+    links,
+    dialog
 });

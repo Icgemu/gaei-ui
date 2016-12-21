@@ -26,7 +26,8 @@ let store = createStore(tabs,{
     ],
     currentActive:{id:"header1",path:"/t1",title:"导航1"}
   },
-  tabs:[]
+  tabs:[],
+  dialog:[]
 });
 
 // hashHistory.listen(function (action) {
