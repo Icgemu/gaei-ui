@@ -5,6 +5,7 @@ import '../../../lib/B-JUI/BJUI/themes/css/style.css';
 import '../../../lib/B-JUI/BJUI/themes/blue/core.css';
 import '../../../lib/B-JUI/BJUI/themes/css/FA/css/font-awesome.min.css';
 import Dialog from '../dialog/Dialog';
+import Taskbar from '../dialog/Taskbar';
 import { connect } from 'react-redux';
 class App extends React.Component {
     constructor(props) {
@@ -21,6 +22,7 @@ class App extends React.Component {
           <TopHeader/>
           {this.props.children}
           <Footer/>
+          <Taskbar/>
           {dialogs}
         </div>
       );

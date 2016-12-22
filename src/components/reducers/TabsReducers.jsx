@@ -76,14 +76,33 @@ const links = (state = {}, action) => {
 const dialog = (state = [], action) => {
   switch (action.type) {
     case 'ADD_MODAL':
+      let added = state.map(item => {
+        return item.id === action.option.id;
+      })
+      if(added.length >0){
+        return state;
+      }
       return [...state,action.option];
     case 'CLOSE_MODAL':
       return state.filter(e=>{return e.id !== action.id});
-    case 'MINIMIZE_MODAL':
-      return state;
-    case 'MAXIMIZE_MODAL':
-      return state;
-    case 'RESTORE_MODAL':
+    default:
+      return state
+    }
+}
+
+const minDialog = (state = [], action) => {
+  switch (action.type) {
+    case 'ADD_MINI_MODAL':
+      let added = state.map(item => {
+        return item.id === action.option.id;
+      })
+      if(added.length >0){
+        return state;
+      }
+      return [...state,action.option];
+    case 'CLOSE_MINI_MODAL':
+      return state.filter(e=>{return e.id !== action.id});
+    case 'RESTORE_MINI_MODAL':
       return state;
     default:
       return state
@@ -92,5 +111,6 @@ const dialog = (state = [], action) => {
 export default combineReducers({
     tabs,
     links,
-    dialog
+    dialog,
+    minDialog
 });
