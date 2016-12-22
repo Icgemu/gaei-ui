@@ -108,9 +108,21 @@ const minDialog = (state = [], action) => {
       return state
     }
 }
+
+const alerts = (state = [], action) => {
+  switch (action.type) {
+    case 'ADD_ALERT_MSG':
+      return [...state,action.option];
+    case 'DEL_ALERT_MSG':
+        return state.filter(e=>{return e.id !== action.id});
+    default:
+      return state
+    }
+}
 export default combineReducers({
     tabs,
     links,
     dialog,
-    minDialog
+    minDialog,
+    alerts
 });

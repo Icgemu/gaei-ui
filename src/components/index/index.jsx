@@ -3,8 +3,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route,IndexRoute,Redirect , IndexRedirect,hashHistory } from 'react-router';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import tabs from '../reducers/TabsReducers';
 import Container1 from '../Container/Container1';
 import Container2 from '../Container/Container2';
 import Page1 from '../pages/Page1';
@@ -15,29 +13,8 @@ import Page5 from '../pages/Page5';
 import Page6 from '../pages/Page6';
 import Form1 from '../pages/Form1';
 import Form2 from '../pages/Form2';
-import TabsRoute from '../App/TabsRoute';
 import {addTab,activeUrl} from '../reducers/index';
-
-let store = createStore(tabs,{
-  links:{
-    links:[
-      {id:"header1",path:"/t1",title:"导航1"},
-      {id:"header2",path:"/t2",title:"导航2"}
-    ],
-    currentActive:{id:"header1",path:"/t1",title:"导航1"}
-  },
-  tabs:[],
-  dialog:[]
-});
-
-// hashHistory.listen(function (action) {
-//   // console.log("action=>"+JSON.stringify(action));
-//   if(action.action ==='POP'){
-//     let state = store.getState();
-//     let tabs = state.tabs;
-//     // console.log("tabs=>"+JSON.stringify(tabs));
-//   }
-// })
+import store from './store';
 
 const onRouteEnter = function(e,item){
   console.log("enter:"+e.location.pathname);

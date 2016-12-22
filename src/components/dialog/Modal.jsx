@@ -46,8 +46,8 @@ class Modal extends React.Component {
         e.preventDefault();
         e.stopPropagation();
     }
-    close(e) {
-        this.props.close(e);
+    close(e,id) {
+        this.props.close(id);
         e.preventDefault();
         e.stopPropagation();
     }
@@ -159,7 +159,7 @@ class Modal extends React.Component {
                     this.mouseUp(e)
                 }}>
                     <a className="close" onClick={e => {
-                        this.close(id)
+                        this.close(e,id)
                     }} title="关闭">
                         <i className="fa fa-times-circle"></i>
                     </a>

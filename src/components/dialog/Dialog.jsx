@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from './Modal';
 import { connect } from 'react-redux';
+import store from "../index/store"
 
 class Dialog extends React.Component {
     constructor(props) {
@@ -17,14 +18,14 @@ class Dialog extends React.Component {
 
 const addModal = (option) => {
   return {
-    type: 'MAXIMIZE_MODAL',
+    type: 'ADD_MODAL',
     option
   }
 }
 
 
-export const dialog = function(options){
-
+export const dialog =function(option){
+    store.dispatch(addModal(option));
 }
 
 export default Dialog;
