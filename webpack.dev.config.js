@@ -32,6 +32,7 @@ const config = {
             hash: true
         }),
     ],
+    devtool: 'source-map',
     module: {
         loaders: [
             {
