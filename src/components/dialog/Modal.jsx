@@ -1,7 +1,7 @@
-import React from 'react';
-import {Route} from 'react-router';
-import {connect} from 'react-redux';
-
+import React from 'react'
+import {Route} from 'react-router'
+import {connect} from 'react-redux'
+import styles from './dialog.scss'
 class Modal extends React.Component {
     constructor(props) {
         super(props);
@@ -116,7 +116,7 @@ class Modal extends React.Component {
         let restore;
         if (this.state.restore) {
             restore = (
-                <a className="close" style={{
+                <a className={styles.close} style={{
                     right: '23px'
                 }} onClick={e => {
                     this.restore(e)
@@ -126,7 +126,7 @@ class Modal extends React.Component {
             )
         } else {
             restore = (
-                <a className="close" style={{
+                <a className={styles.close} style={{
                     right: '23px'
                 }} onClick={e => {
                     this.maximize(e)
@@ -136,14 +136,14 @@ class Modal extends React.Component {
             )
         }
         return (
-            <div className="bjui-dialog bjui-dialog-container" style={{
-                zIndex: 200,
+            <div className={styles.dialog} style={{
+                zIndex: 10,
                 top: top + 'px',
                 left: left + 'px',
                 width: width + 'px',
                 height: height + 'px'
             }}>
-                <div className="dialogHeader" onSelectStart={e => {
+                <div className={styles.dialogHeader} onSelectStart={e => {
                     return false;
                 }} onCopy={e => {
                     return false
@@ -158,13 +158,13 @@ class Modal extends React.Component {
                 }} onMouseUp={e => {
                     this.mouseUp(e)
                 }}>
-                    <a className="close" onClick={e => {
+                    <a className={styles.close} onClick={e => {
                         this.close(e,id)
                     }} title="关闭">
                         <i className="fa fa-times-circle"></i>
                     </a>
                     {restore}
-                    <a className="close" style={{
+                    <a className={styles.close} style={{
                         right: '42px'
                     }} onClick={e => {
                         this.minimize(e,id, title, component)
@@ -178,7 +178,7 @@ class Modal extends React.Component {
                         <span className="title">{title}</span>
                     </h1>
                 </div>
-                <div className="dialogContent unitBox">{this.props.component}</div>
+                <div className={styles.dialogContent}>{this.props.component}</div>
             </div>
         )
     }

@@ -1,0 +1,39 @@
+.dialog {
+    position: absolute;
+    display: block;
+    text-align: left;
+    border-radius: 3px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    background: #f3f8fc;
+    border: 1px #DDD solid;
+}
+
+.dialogHeader {
+    position: relative;
+    padding: 0 5px;
+    cursor: move;
+    display: block;
+    height: 28px;
+    overflow: hidden;
+    background: #d9e7f2;
+    border-bottom: 1px #c3ced5 solid;
+
+    .close{
+      position: absolute;
+      top: 4px;
+      display: block;
+      width: 19px;
+      height: 19px;
+      overflow: hidden;
+      font-size: 18px;
+      line-height: 19px;
+      right: 4px;
+      opacity: 1;
+      cursor:pointer;
+    }
+}
+
+.dialogContent {
+    position: relative;
+    margin: 5px;
+}

@@ -1,9 +1,10 @@
 import React from 'react';
 import TopHeader from '../Header/TopHeader';
-import Footer from '../foot/Footer';
 import '../../../lib/B-JUI/BJUI/themes/css/style.css';
 import '../../../lib/B-JUI/BJUI/themes/blue/core.css';
+import './default.css';
 import '../../../lib/B-JUI/BJUI/themes/css/FA/css/font-awesome.min.css';
+import styles from './app.scss';
 import Dialog from '../dialog/Dialog';
 import Taskbar from '../dialog/Taskbar';
 import Alertmsg from '../dialog/Alertmsg';
@@ -26,10 +27,9 @@ class App extends React.Component {
         )
       });
       return (
-        <div id="bjui-window">
+        <div className={styles.window}>
           <TopHeader/>
           {this.props.children}
-          <Footer/>
           <Taskbar/>
           {dialogs}
           {alerts}

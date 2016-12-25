@@ -2,6 +2,7 @@ import React from 'react';
 import Leftbar from './Leftbar';
 import Navtab from './Navtab';
 import {windowInfo} from '../reducers/index';
+import styles from './container.scss'
 class Container extends React.Component {
     constructor(props) {
         super(props);
@@ -57,14 +58,15 @@ class Container extends React.Component {
       let lis = ctabs.map((item,i) =>{
         let span ;
         if(i !== 0){
-          span = <span id={item.id} className="close" onClick={e =>{this.delTab(e,item)}}>×</span>;
+          span = <span id={item.id} className={styles.close} onClick={e =>{this.delTab(e,item)}}>×</span>;
         }
         // if(item.active && item.path !== this.props.location.pathname){
         //   console.log("current:"+item.path+",location:"+this.props.location.pathname);
         //   this.props.router.push(item.path);
         // }
+        let active = item.active?styles.active:''
         return (
-          <li className={item.active?'active':''}>
+          <li className={active}>
             <a href={`#${item.path}`}>
             <span><i className="fa fa-home"></i> {item.title}</span>
             </a>
@@ -72,29 +74,24 @@ class Container extends React.Component {
           </li>
         )
       });
-
+      // containercls = `${styles.gaeiContainer} `
       return (
-        <div id="bjui-container" className="clearfix"
+        <div className={styles.gaeiContainer}
           style={{height:height+'px',width:width+'px'}}>
 
           <Leftbar width={sidebar} height={height}>
             {this.props.left}
           </Leftbar>
 
-          <div id="bjui-navtab" className="tabsPage" style={{width:(width-sidebar-6)+'px',height:height+'px'}}>
-              <div className="tabsPageHeader">
-                  <div className="tabsPageHeaderContent">
-                      <ul className="navtab-tab nav nav-tabs">
+          <div className={styles.navtab} style={{width:(width-sidebar-6)+'px',height:height+'px'}}>
+              <div className={styles.tabsPageHeader}>
+                  <div className={styles.tabsPageHeaderContent}>
+                      <ul className={styles.navTabs}>
                           {lis}
                       </ul>
                   </div>
-                  <div className="tabsLeft"><i className="fa fa-angle-double-left"></i></div>
-                  <div className="tabsRight"><i className="fa fa-angle-double-right"></i></div>
-                  <div className="tabsMore"><i className="fa fa-angle-double-down"></i></div>
               </div>
-              <ul className="tabsMoreList">
-                  <li><a href="javascript:;"></a></li>
-              </ul>
+
               <Navtab  width={width-sidebar-6} height={height}>
                 {this.props.children}
               </Navtab>

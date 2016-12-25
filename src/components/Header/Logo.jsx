@@ -1,5 +1,6 @@
 import React from 'react';
 import gaei from './gaei.png';
+import styles from './header.scss';
 
 class Logo extends React.Component {
     constructor(props) {
@@ -10,12 +11,13 @@ class Logo extends React.Component {
     render() {
       let {height} = this.props;
       let style = {height};
+      let css = `${styles.logoBtnToggle} btn-default`;
       return (
-        <div className="bjui-navbar-header" style={style}>
-            <button type="button" className="bjui-navbar-toggle btn-default" data-toggle="collapse" data-target="#bjui-navbar-collapse">
+        <div className={styles.logo} style={style}>
+            <button type="button" className={css} data-toggle="collapse" data-target="#bjui-navbar-collapse">
               <i className="fa fa-bars"></i>
             </button>
-            <a className="bjui-navbar-logo" href="#"><img src={gaei} style={{height:'40px'}}/></a>
+            <a className={styles.logoImg} href="#/"><img src={gaei} style={{height:'40px'}}/></a>
         </div>
       );
     }

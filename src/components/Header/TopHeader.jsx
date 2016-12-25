@@ -3,6 +3,8 @@ import Nav from './Nav';
 import Logo from './Logo';
 import Navbar from './Navbar';
 
+import styles from './header.scss';
+
 class TopHeader extends React.Component {
     constructor(props) {
         super(props);
@@ -10,9 +12,9 @@ class TopHeader extends React.Component {
     }
 
     render() {
-      
+
       return (
-        <header id="bjui-header">
+        <header className={styles.gaeiHeader}>
             <Logo/>
             <Nav/>
             <Navbar/>

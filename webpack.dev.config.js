@@ -32,7 +32,7 @@ const config = {
             hash: true
         }),
     ],
-    devtool: 'source-map',
+    // devtool: 'source-map',
     module: {
         loaders: [
             {
@@ -44,16 +44,22 @@ const config = {
                 exclude: /node_modules/
             }, {
                 test: /\.less$/,
-                loader: ExtractTextPlugin.extract('style-loader', 'css-loader!less-loader')
+                loader: ExtractTextPlugin
+                .extract('style-loader',
+                'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]','postcss-loader','less-loader')
+            },
+            {
+                test: /\.scss$/,
+                loader: ExtractTextPlugin
+                .extract('style','css?modules&localIdentName=[name]__[local]___[hash:base64:5]!resolve-url-loader!postcss-loader','sass-loader')
+            },
+            {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract('style-loader','css-loader!postcss-loader')
             },
             {
                 test: /\.(png|jpg|gif)$/,
                 loader: 'url?limit=8192&name=./img/[hash].[ext]',
-            },
-            {
-                test: /\.css$/,
-                loader: ExtractTextPlugin
-                    .extract('style-loader','css-loader!postcss-loader')
             },
             {
                test: /\.(woff|svg|eot|ttf)\??.*$/,
