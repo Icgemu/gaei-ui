@@ -1,8 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router';
-import DialogButton from '../dialog/DialogButton';
-import {dialog} from '../dialog/Dialog';
-import {alertMsg} from '../dialog/Alertmsg';
+// import { Link } from 'react-router';
+// import DialogButton from '../dialog/DialogButton';
+// import {dialog} from '../dialog/Dialog';
+// import {alertMsg} from '../dialog/Alertmsg';
+import '../table/less/style.less';
+import './table/style.less';
+
+import FixedColumnTable from './table/examples/FixedColumnTable';
+import PaginationTable from './table/examples/PaginationTable';
+import ResizableColumnTable from './table/examples/ResizableColumnTable';
+import CustomColumnTable from './table/examples/CustomColumnTable';
+import TreeTable from './table/examples/TreeTable';
 class Form1 extends React.Component {
     constructor(props) {
         super(props);
@@ -10,104 +18,24 @@ class Form1 extends React.Component {
     }
 
     componentDidMount() {
-      let c = <div> dialog modal </div>;
-      let option = {
-        id:'12333',
-        title:'test',
-        component:c,
-        width:300,
-        height:200
-      }
+      // let c = <div> dialog modal </div>;
+      // let option = {
+      //   id:'12333',
+      //   title:'test',
+      //   component:c,
+      //   width:300,
+      //   height:200
+      // }
       // let button = <DialogButton option={option} className="btn btn-default"> open dialog</DialogButton>;
       // let msg = <Alertmsg msg="ok?" title="test" type="info" />
-      dialog(option);
-      alertMsg({msg:"ok?", title:"test", type:"warn"});
+      // dialog(option);
+      // alertMsg({msg:"ok?", title:"test", type:"warn"});
     }
 
     render() {
 
       return (
-        <div className="bjui-pageContent">
-            <form action="ajaxDone1.html" id="j_form_form" className="pageForm" data-toggle="validate">
-                <div style={{margin:'15px auto 0',width:'800px'}}>
-                    <fieldset>
-                        <legend>文本框1</legend>
-                        <table className="table table-condensed table-hover">
-                            <thead>
-                                <tr>
-                                    <th>样例</th>
-                                    <th>class</th>
-                                    <th>属性</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input type="text" value="普通文本框"/></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="text" className="input-sm" value="小尺寸文本框"/></td>
-                                    <td>input-sm</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="text" className="input-nm" value="稍大尺寸文本框"/></td>
-                                    <td>input-nm</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="text" className="input-lg" value="较大尺寸文本框"/></td>
-                                    <td>input-lg</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="text" value="固定尺寸的普通文本框" size="30"/></td>
-                                    <td></td>
-                                    <td>size="30"</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="text" value="只读文本框" size="30" readonly/></td>
-                                    <td></td>
-                                    <td>size="30" readonly</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="text" value="已禁用的文本框" size="30" disabled/></td>
-                                    <td></td>
-                                    <td>size="30" disabled</td>
-                                </tr>
-                                <tr>
-                                    <td><textarea>普通多行文本框</textarea></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td><textarea cols="30">固定尺寸的普通多行文本框</textarea></td>
-                                    <td></td>
-                                    <td>cols="30"</td>
-                                </tr>
-                                <tr>
-                                    <td><textarea cols="30" rows="1" data-toggle="autoheight">自动调整高度的多行文本框</textarea></td>
-                                    <td></td>
-                                    <td>cols="30" rows="1" data-toggle="autoheight"</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3">
-                                        <div className="alert alert-warning form-inline"><i className="fa fa-warning"></i> <strong>Class说明：</strong>JS会为text或textarea自动加上Class[form-control]。</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3">
-                                      <Link to="/t3/i1">Go</Link>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </fieldset>
-                </div>
-            </form>
-            {this.props.children}
-        </div>
+        <PaginationTable />
       );
     }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import TopHeader from '../Header/TopHeader';
-import '../../../lib/B-JUI/BJUI/themes/css/style.css';
-import '../../../lib/B-JUI/BJUI/themes/blue/core.css';
+// impo gc vrt '../../../lib/B-JUI/BJUI/themes/css/style.css';
+// import '../../../lib/B-JUI/BJUI/themes/blue/core.css';
 import './default.css';
 import '../../../lib/B-JUI/BJUI/themes/css/FA/css/font-awesome.min.css';
 import styles from './app.scss';
