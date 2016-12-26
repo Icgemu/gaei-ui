@@ -2,6 +2,8 @@ import React from 'react'
 import {Route} from 'react-router'
 import {connect} from 'react-redux'
 import styles from './dialog.scss'
+import CSSModules from 'react-css-modules'
+
 class Modal extends React.Component {
     constructor(props) {
         super(props);
@@ -116,7 +118,7 @@ class Modal extends React.Component {
         let restore;
         if (this.state.restore) {
             restore = (
-                <a className={styles.close} style={{
+                <a styleName="close" style={{
                     right: '23px'
                 }} onClick={e => {
                     this.restore(e)
@@ -126,7 +128,7 @@ class Modal extends React.Component {
             )
         } else {
             restore = (
-                <a className={styles.close} style={{
+                <a styleName="close" style={{
                     right: '23px'
                 }} onClick={e => {
                     this.maximize(e)
@@ -136,14 +138,14 @@ class Modal extends React.Component {
             )
         }
         return (
-            <div className={styles.dialog} style={{
+            <div styleName="dialog" style={{
                 zIndex: 10,
                 top: top + 'px',
                 left: left + 'px',
                 width: width + 'px',
                 height: height + 'px'
             }}>
-                <div className={styles.dialogHeader} onSelectStart={e => {
+                <div styleName="dialogHeader" onSelectStart={e => {
                     return false;
                 }} onCopy={e => {
                     return false
@@ -158,27 +160,24 @@ class Modal extends React.Component {
                 }} onMouseUp={e => {
                     this.mouseUp(e)
                 }}>
-                    <a className={styles.close} onClick={e => {
+                    <a styleName="close" onClick={e => {
                         this.close(e,id)
                     }} title="关闭">
                         <i className="fa fa-times-circle"></i>
                     </a>
                     {restore}
-                    <a className={styles.close} style={{
+                    <a styleName="close" style={{
                         right: '42px'
                     }} onClick={e => {
                         this.minimize(e,id, title, component)
                     }} title="最小化">
                         <i className="fa fa-minus-circle"></i>
                     </a>
-                    <h1>
-                        <span>
-                            <i className="fa fa-th-large"></i>
-                        </span>
-                        <span className="title">{title}</span>
-                    </h1>
+                    <h6>
+                        <span styleName="title"><i className="fa fa-th-large"></i>&nbsp;{title}</span>
+                    </h6>
                 </div>
-                <div className={styles.dialogContent}>{this.props.component}</div>
+                <div styleName="dialogContent">{this.props.component}</div>
             </div>
         )
     }
@@ -211,4 +210,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Modal)
+export default connect(mapStateToProps, mapDispatchToProps)(CSSModules(Modal,styles, {allowMultiple: true}))

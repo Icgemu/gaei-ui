@@ -1,9 +1,12 @@
-import React from 'react';
+import React from 'react'
 // import Modal from './Modal';
-import {connect} from 'react-redux';
+import {connect} from 'react-redux'
 import store from "../index/store"
 // import "./alertmsg.css";
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import styles from './dialog.scss'
+import CSSModules from 'react-css-modules'
+
 
 class Alertmsg extends React.Component {
     constructor(props) {
@@ -54,18 +57,20 @@ class Alertmsg extends React.Component {
           </li>
         )
         return (
-          <div id="bjui-alertMsgBox" className="bjui-alert" style={{top:this.state.top+'px'}}>
-              <div className="alertContent">
+          <div  styleName="alert" style={{top:this.state.top+'px'}}>
+              <div styleName="alertHeader">
+                <h6>
+                  <span styleName="title"><i className={fa}></i>&nbsp;{this.props.title}</span>
+                </h6>
+              </div>
+
+              <div styleName="alertContent">
                   <div className={this.props.type}>
-                      <div className="alertInner">
-                          <h1>
-                              <i className={fa}></i>{this.props.title}</h1>
-                          <div className="msg">{this.props.msg}</div>
-                      </div>
-                      <div className="toolBar">
-                          <ul>{btn}</ul>
-                      </div>
+                      <div styleName="msg">{this.props.msg}</div>
                   </div>
+              </div>
+              <div styleName="toolBar">
+                  <ul>{btn}</ul>
               </div>
           </div>
         );
@@ -93,5 +98,5 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(Alertmsg)
+export default connect(null, mapDispatchToProps)(CSSModules(Alertmsg, styles, {allowMultiple: true}))
 // export default Alertmsg
