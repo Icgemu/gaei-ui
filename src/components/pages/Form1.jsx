@@ -3,7 +3,7 @@ import React from 'react';
 // import DialogButton from '../dialog/DialogButton';
 // import {dialog} from '../dialog/Dialog';
 // import {alertMsg} from '../dialog/Alertmsg';
-import '../table/less/style.less';
+import 'rsuite-table/less/style.less';
 import './table/style.less';
 
 import FixedColumnTable from './table/examples/FixedColumnTable';

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Table, Column, Cell, HeaderCell } from '../../../table';
+import {Table, Column, Cell, HeaderCell } from 'rsuite-table';
 
 
 function fakeObjectDataListStore() {

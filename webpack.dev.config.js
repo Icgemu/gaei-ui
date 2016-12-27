@@ -6,7 +6,16 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const config = {
     resolve: {
-      extensions: ['', '.js', '.jsx']
+      extensions: ['', '.js', '.jsx'],
+      alias: {
+        "moment": "moment/min/moment-with-locales.min.js",
+        "rsuite-table":path.resolve(__dirname,"./src/lib/table/"),
+        "dom-lib":path.resolve(__dirname,"./src/lib/dom-lib/lib/"),
+        "rsuite-datepicker":path.resolve(__dirname,"./src/lib/datepicker/"),
+        "rsuite-picker":path.resolve(__dirname,"./src/lib/picker/"),
+        "rsuite-echarts":path.resolve(__dirname,"./src/lib/echarts/"),
+        "rsuite":path.resolve(__dirname,"./src/lib/rsuite/src/")
+      }
     },
     entry: [
       'webpack-dev-server/client?http://0.0.0.0:3000',
