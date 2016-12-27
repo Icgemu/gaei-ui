@@ -47,6 +47,6 @@ export const windowInfo = () => {
     ww,
     hh,
     th,
-    fh
+    fh:0
   }
 }

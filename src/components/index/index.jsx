@@ -16,6 +16,8 @@ import Form2 from '../pages/Form2';
 import {addTab,activeUrl} from '../reducers/index';
 import store from './store';
 
+import {FixedColumnTableComponent,PaginationTableComponent,ResizableColumnTableComponent,CustomColumnTableComponent,TreeTableComponent} from '../pages/table/FixedColumnTable'
+
 const onRouteEnter = function(e,item){
   console.log("enter:"+e.location.pathname);
   let path = e.location.pathname;
@@ -30,11 +32,12 @@ ReactDOM.render((
     <Route path="/" component={App}>
       <IndexRedirect to="/t1" />
       <Route path="t1" component={Container1}>
-        <IndexRedirect to="home"/>
-        <Route path="home" component={Form1} onEnter={(nextloc)=>{onRouteEnter(nextloc,{id:'home1',title:"首页1"})}}/>
-        <Route path="n1" component={Page1} onEnter={(nextloc)=>{onRouteEnter(nextloc,{id:'id1',title:"页面1"})}}/>
-        <Route path="n2" component={Page2} onEnter={(nextloc)=>{onRouteEnter(nextloc,{id:'id2',title:"页面2"})}}/>
-        <Route path="n3" component={Page3} onEnter={(nextloc)=>{onRouteEnter(nextloc,{id:'id3',title:"页面3"})}}/>
+        <IndexRedirect to="t1"/>
+        <Route path="t1" component={FixedColumnTableComponent} onEnter={(nextloc)=>{onRouteEnter(nextloc,{id:'t1-1',title:"固定行列表格"})}}/>
+        <Route path="t2" component={PaginationTableComponent} onEnter={(nextloc)=>{onRouteEnter(nextloc,{id:'t1-2',title:"分页表格"})}}/>
+        <Route path="t3" component={ResizableColumnTableComponent} onEnter={(nextloc)=>{onRouteEnter(nextloc,{id:'t1-4',title:"可变列宽表格"})}}/>
+        <Route path="t4" component={CustomColumnTableComponent} onEnter={(nextloc)=>{onRouteEnter(nextloc,{id:'t1-4',title:"自定义行数据表格"})}}/>
+        <Route path="t5" component={TreeTableComponent} onEnter={(nextloc)=>{onRouteEnter(nextloc,{id:'t1-5',title:"树形固表格"})}}/>
       </Route>
       <Route path="t2" component={Container2}>
         <IndexRedirect to="home"/>

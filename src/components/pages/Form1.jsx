@@ -1,8 +1,4 @@
 import React from 'react';
-// import { Link } from 'react-router';
-// import DialogButton from '../dialog/DialogButton';
-// import {dialog} from '../dialog/Dialog';
-// import {alertMsg} from '../dialog/Alertmsg';
 import 'rsuite-table/less/style.less';
 import './table/style.less';
 
@@ -18,18 +14,6 @@ class Form1 extends React.Component {
     }
 
     componentDidMount() {
-      // let c = <div> dialog modal </div>;
-      // let option = {
-      //   id:'12333',
-      //   title:'test',
-      //   component:c,
-      //   width:300,
-      //   height:200
-      // }
-      // let button = <DialogButton option={option} className="btn btn-default"> open dialog</DialogButton>;
-      // let msg = <Alertmsg msg="ok?" title="test" type="info" />
-      // dialog(option);
-      // alertMsg({msg:"ok?", title:"test", type:"warn"});
     }
 
     render() {
