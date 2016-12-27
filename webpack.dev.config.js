@@ -71,7 +71,11 @@ const config = {
             {
                test: /\.(woff|svg|eot|ttf)\??.*$/,
                loader: "file-loader?&name=./font/[hash].[ext]"
-           }
+           },
+           {
+                test: /\.md$/,
+                loader: 'html!markdown'
+            }
         ]
     },
     postcss: function () {

@@ -13,7 +13,9 @@ class Tabs1 extends React.Component {
             {id:'t1-4',path:'/t1/t4',title:'自定义行数据表格'},
             {id:'t1-5',path:'/t1/t5',title:'树形固表格'}
           ]},
-          {id:'t2',path:'/t2',title:'时间插件'},
+          {id:'t2',path:'/t2',title:'选择器',childs:[
+            {id:'t2-1',path:'/t2/t1',title:'选择器样例'}
+          ]},
           {id:'t3',path:'/t3',title:'Echarts插件'}
         ]};
     }

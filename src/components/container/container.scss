@@ -133,6 +133,7 @@
       bottom: 0;
       padding: 10px;
       width: 100%;
-      overflow: auto;
+      overflow-y: auto;
+      overflow-x: hidden;
     }
 }
