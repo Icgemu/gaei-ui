@@ -41,8 +41,8 @@ export const windowInfo = () => {
   let ww = $(window).width();
   let hh = $(window).height();
 
-  let th = $('#bjui-header').height();
-  let fh = $('#bjui-footer').height();
+  let th = $('#gaei-header').height();
+  let fh = $('#gaei-footer').height();
   return {
     ww,
     hh,

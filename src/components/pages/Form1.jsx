@@ -35,7 +35,17 @@ class Form1 extends React.Component {
     render() {
 
       return (
+        <div>
+        <FixedColumnTable />
+        <hr/>
         <PaginationTable />
+        <hr/>
+        <ResizableColumnTable />
+        <hr/>
+        <CustomColumnTable />
+        <hr/>
+        <TreeTable />
+        </div>
       );
     }
 }

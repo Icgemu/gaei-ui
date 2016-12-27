@@ -14,7 +14,7 @@ class TopHeader extends React.Component {
     render() {
 
       return (
-        <header className={styles.gaeiHeader}>
+        <header id="gaei-header" className={styles.gaeiHeader}>
             <Logo/>
             <Nav/>
             <Navbar/>
