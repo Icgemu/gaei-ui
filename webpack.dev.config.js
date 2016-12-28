@@ -8,7 +8,6 @@ const config = {
     resolve: {
       extensions: ['', '.js', '.jsx'],
       alias: {
-        "moment": "moment/min/moment-with-locales.min.js",
         "rsuite-table":path.resolve(__dirname,"./src/lib/table/"),
         "dom-lib":path.resolve(__dirname,"./src/lib/dom-lib/lib/"),
         "rsuite-datepicker":path.resolve(__dirname,"./src/lib/datepicker/"),

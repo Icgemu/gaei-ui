@@ -11,7 +11,7 @@ class Navtab extends React.Component {
 
       return (
         <div className={styles.tabsPageContent} style={{width:width+'px',height:(height-26)+'px'}}>
-            <div className={styles.navtabPage}>
+            <div className={styles.navtabPage} style={{width:width+'px',height:(height-26)+'px'}}>
                   {this.props.children}
             </div>
         </div>

@@ -27,7 +27,9 @@ const ECharts = React.createClass({
         };
     },
     componentDidMount() {
-        this.init();
+       // lazy for DOM ready.
+       setTimeout(()=>{this.init()},10);
+       
     },
     componentDidUpdate() {
         this.renderEcharts();

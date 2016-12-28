@@ -16,7 +16,12 @@ class Tabs1 extends React.Component {
           {id:'t2',path:'/t2',title:'选择器',childs:[
             {id:'t2-1',path:'/t2/t1',title:'选择器样例'}
           ]},
-          {id:'t3',path:'/t3',title:'Echarts插件'}
+          {id:'t3',path:'/t3',title:'时间选择器',childs:[
+            {id:'t3-1',path:'/t3/t1',title:'时间选择器样例'}
+          ]},
+          {id:'t4',path:'/t4',title:'Echarts',childs:[
+            {id:'t4-1',path:'/t4/t1',title:'Echarts插件'}
+          ]}
         ]};
     }
 

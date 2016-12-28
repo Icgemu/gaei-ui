@@ -5,7 +5,7 @@ import DateContainer from './DateContainer.js';
 import Calendar from './Calendar.js';
 import Clock from './Clock.js';
 import { transitionEndDetect } from './utils/eventDetect.js';
-import RootCloseWrapper from 'rsuite/lib/fixtures/RootCloseWrapper.js';
+import RootCloseWrapper from 'rsuite/fixtures/RootCloseWrapper.js';
 
 const DatePicker = React.createClass({
     propTypes: {

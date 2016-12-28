@@ -18,6 +18,8 @@ import store from './store';
 
 import {FixedColumnTableComponent,PaginationTableComponent,ResizableColumnTableComponent,CustomColumnTableComponent,TreeTableComponent} from '../pages/table/FixedColumnTable'
 import {PickerExample} from '../pages/picker/index.js'
+import {DatePickerApp} from '../pages/datepicker/deploy/app.js'
+import {EchartsApp} from '../pages/echarts/index.js'
 
 const onRouteEnter = function(e,item){
   console.log("enter:"+e.location.pathname);
@@ -31,7 +33,7 @@ ReactDOM.render((
   <Provider store={store}>
   <Router history={hashHistory}>
     <Route path="/" component={App}>
-      <IndexRedirect to="/t1" />
+      <IndexRedirect to="/t4" />
       <Route path="t1" component={Container1}>
         <IndexRedirect to="t1"/>
         <Route path="t1" component={FixedColumnTableComponent} onEnter={(nextloc)=>{onRouteEnter(nextloc,{id:'t1-1',title:"固定行列表格"})}}/>
@@ -43,9 +45,14 @@ ReactDOM.render((
       <Route path="t2" component={Container1}>
         <IndexRedirect to="t1"/>
         <Route path="t1" component={PickerExample} onEnter={(nextloc)=>{onRouteEnter(nextloc,{id:'t2-1',title:"选择器"})}}/>
-        <Route path="n1" component={Page4} onEnter={(nextloc)=>{onRouteEnter(nextloc,{id:'id4',title:"页面4"})}}/>
-        <Route path="n2" component={Page5} onEnter={(nextloc)=>{onRouteEnter(nextloc,{id:'id5',title:"页面5"})}}/>
-        <Route path="n3" component={Page6} onEnter={(nextloc)=>{onRouteEnter(nextloc,{id:'id6',title:"页面6"})}}/>
+      </Route>
+      <Route path="t3" component={Container1}>
+        <IndexRedirect to="t1"/>
+        <Route path="t1" component={DatePickerApp} onEnter={(nextloc)=>{onRouteEnter(nextloc,{id:'t3-1',title:"时间选择器"})}}/>
+      </Route>
+      <Route path="t4" component={Container1}>
+        <IndexRedirect to="t1"/>
+        <Route path="t1" component={EchartsApp} onEnter={(nextloc)=>{onRouteEnter(nextloc,{id:'t4-1',title:"Echarts"})}}/>
       </Route>
     </Route>
   </Router>
