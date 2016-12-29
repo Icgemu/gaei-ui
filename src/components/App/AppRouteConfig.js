@@ -1,5 +1,5 @@
 import App from "../App/app.jsx";
-import Container1 from '../Container/Container1';
+// import Container1 from '../Container/Container1';
 import {FixedColumnTableComponent,PaginationTableComponent,ResizableColumnTableComponent,CustomColumnTableComponent,TreeTableComponent} from '../pages/table/FixedColumnTable'
 import {PickerExample} from '../pages/picker/index.js'
 import {DatePickerApp} from '../pages/datepicker/deploy/app.js'
@@ -14,7 +14,7 @@ export const  AppConfig = {
   childs:[
     {
       navibar:{title:"样例管理",path:"a1"},
-      naviTo:Container1,
+      // naviTo:Container1,
       indexRoute:'n1',
       leftbar:[
         {group:'表格',childs:[

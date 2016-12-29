@@ -20,7 +20,9 @@ import store from './store';
 // import {PickerExample} from '../pages/picker/index.js'
 // import {DatePickerApp} from '../pages/datepicker/deploy/app.js'
 // import {EchartsApp} from '../pages/echarts/index.js'
-import AppConfig from '../App/AppRouteConfig'
+import Tabs from '../tabs/Tabs'
+import StatefulContainer from '../container/StatefulContainer'
+import {AppConfig} from '../App/AppRouteConfig'
 
 const onRouteEnter = function(e,item){
   console.log("enter:"+e.location.pathname);
@@ -30,18 +32,18 @@ const onRouteEnter = function(e,item){
   store.dispatch(activeUrl(path));
 }
 
-
 const renderRoot = function(config){
   let index ;
   if(config.indexRoute){
-    index = <IndexRedirect to=`${config.indexRoute}` />
+    index = <IndexRedirect to={config.indexRoute} />
   }
+  let navi = renderNavi(config);
   let root = (
     <Provider store={store}>
       <Router history={hashHistory}>
-        <Route path=`${config.path}` component={config.naviTo}>
+        <Route path={config.path} component={config.naviTo}>
         {index}
-        {renderNavi()}
+        {navi}
         </Route>
       </Router>
     </Provider>
@@ -52,17 +54,38 @@ const renderRoot = function(config){
 const renderNavi = function(config){
   if(config.navibar && config.leftbar){
     return config.childs.map(child=>{
+
       let index ;
-      if(config.indexRoute){
-        index = <IndexRedirect to=`${config.indexRoute}` />
+      if(child.indexRoute){
+        index = <IndexRedirect to={child.indexRoute} />
       }
+      let left = renderLeftbar(child.navibar.path,child.leftbar)
+
+      let route = renderLeftbar(child.navibar.path,child.router)
+      let bar = [...child.leftbar];
+      let parentRoute = config.path+child.navibar.path+"/"
+      bar.map((group,i)=>{
+         group.childs.map(route=>{
+           route.path = parentRoute+route.path
+         })
+      })
+      let DerivedContainer = ({children,...props})=>{
+        let leftbar = <Tabs links={child.leftbar} />
+        return (
+          <StatefulContainer left={leftbar} {...props}>
+            {children}
+          </StatefulContainer>
+        )
+      }
+
       let root = (
-        <Route path=`${child.navibar.path}` component={child.naviTo}>
-        {index}
-        {renderLeftbar(config.navibar.path,config.leftbar)}
-        {renderLeftbar(config.navibar.path,config.router)}
+        <Route path={child.navibar.path} component={DerivedContainer}>
+          {index}
+          {left}
+          {route}
         </Route>
       );
+
       return root;
     });
   }
@@ -75,7 +98,7 @@ const renderLeftbar = function(parent,routes){
       child.id = `${parent}.${child.path}.${i}`;
       r.push(child);
     }else{
-      routes.childs.map((route,j)=>{
+      child.childs.map((route,j)=>{
         route.id = `${parent}.${route.path}.${i}.${j}`;
         r.push(route);
       })
@@ -84,10 +107,9 @@ const renderLeftbar = function(parent,routes){
   });
 
   return r.map(route=>{
-    return (<Route path=`${route.path}` component={route.naviTo}
-        onEnter={(nextloc)=>{
-          onRouteEnter(nextloc,{id:`${route.id}`,title:`${route.title}`})}}/>
-        )
+    return (
+      <Route path={route.path} component={route.naviTo} onEnter={(nextloc)=>{onRouteEnter(nextloc,{id:`${route.id}`,title:`${route.title}`})}}/>
+    )
   })
 }
 let root = renderRoot(AppConfig);

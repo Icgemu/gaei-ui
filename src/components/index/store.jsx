@@ -1,14 +1,15 @@
 import { createStore } from 'redux';
 import tabs from '../reducers/TabsReducers';
 
+import {AppConfig} from '../App/AppRouteConfig'
+
+const arr = AppConfig.navibar?AppConfig.childs.map((child,i)=>{let bar = child.navibar;bar.id = i;return bar}):[]
+const defaultlinks = {
+  links:arr,
+  currentActive:arr.length>0?arr[0]:{}
+}
 export default createStore(tabs,{
-  // links:{
-  //   links:[
-  //     {id:"header1",path:"/t1",title:"导航1"},
-  //     {id:"header2",path:"/t2",title:"导航2"}
-  //   ],
-  //   currentActive:{id:"header1",path:"/t1",title:"导航1"}
-  // },
+  links:defaultlinks,
   tabs:[],
   dialog:[],
   alerts:[]

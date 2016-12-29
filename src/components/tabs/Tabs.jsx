@@ -11,7 +11,7 @@ class Tabs extends React.Component {
       let style = {height};
       let links = this.props.links.map((item,i) => {
         let ul ;
-        if(item.childs){
+        if(item.group){
           let lis = item.childs.map(child =>{
             return (
               <li><Link to={child.path} id={child.id} title={child.title}>{child.title}</Link></li>
@@ -19,14 +19,14 @@ class Tabs extends React.Component {
           });
           ul = (
           <li>
-          {item.title}
+          {item.group}
           <ul>
             {lis}
           </ul>
         </li>
           )
         }else{
-          ul = <li>{item.title}</li>
+          ul = <li><Link to={child.path} id={child.id} title={child.title}>{child.title}</Link></li>
         }
         return ul
       })
