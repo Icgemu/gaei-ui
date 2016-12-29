@@ -29,10 +29,11 @@ const ECharts = React.createClass({
     componentDidMount() {
        // lazy for DOM ready.
        setTimeout(()=>{this.init()},10);
-       
+
     },
     componentDidUpdate() {
-        this.renderEcharts();
+        //check for lazy init for DOM ready
+        if(this.chart){this.renderEcharts();}
     },
     componentWillUnmount() {
         this.dispose();
