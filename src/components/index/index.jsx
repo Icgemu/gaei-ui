@@ -1,25 +1,10 @@
-// import App from "../App/app.jsx";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route,IndexRoute,Redirect , IndexRedirect,hashHistory } from 'react-router';
 import { Provider } from 'react-redux';
-// import Container1 from '../Container/Container1';
-// import Container2 from '../Container/Container2';
-// import Page1 from '../pages/Page1';
-// import Page2 from '../pages/Page2';
-// import Page3 from '../pages/Page3';
-// import Page4 from '../pages/Page4';
-// import Page5 from '../pages/Page5';
-// import Page6 from '../pages/Page6';
-// import Form1 from '../pages/Form1';
-// import Form2 from '../pages/Form2';
 import {addTab,activeUrl} from '../reducers/index';
 import store from './store';
 
-// import {FixedColumnTableComponent,PaginationTableComponent,ResizableColumnTableComponent,CustomColumnTableComponent,TreeTableComponent} from '../pages/table/FixedColumnTable'
-// import {PickerExample} from '../pages/picker/index.js'
-// import {DatePickerApp} from '../pages/datepicker/deploy/app.js'
-// import {EchartsApp} from '../pages/echarts/index.js'
 import Tabs from '../tabs/Tabs'
 import StatefulContainer from '../container/StatefulContainer'
 import {AppConfig} from '../App/AppRouteConfig1'
