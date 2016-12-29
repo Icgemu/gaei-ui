@@ -13,13 +13,13 @@ class TopHeader extends React.Component {
 
     render() {
 
-      return (
-        <header id="gaei-header" className={styles.gaeiHeader}>
-            <Logo/>
-            <Nav/>
-            <Navbar/>
-        </header>
-      );
+        return (
+            <header id="gaei-header" className={styles.gaeiHeader}>
+                <Logo/>
+                <Nav/>
+                <Navbar/>
+            </header>
+        );
     }
 }
 

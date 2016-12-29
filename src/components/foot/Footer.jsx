@@ -7,10 +7,11 @@ class Footer extends React.Component {
     }
 
     render() {
-      return (
-        <footer id="gaei-footer" className={styles.footer}>Copyright &copy; 2015 - 2016　<a href="http://oa.gaei.cn" target="_blank">广汽研究院</a>　
-        </footer>
-      );
+        return (
+            <footer id="gaei-footer" className={styles.footer}>Copyright &copy; 2015 - 2016
+                <a href="http://oa.gaei.cn" target="_blank">广汽研究院</a>
+            </footer>
+        );
     }
 }
 

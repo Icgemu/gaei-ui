@@ -40,7 +40,8 @@ class Modal extends React.Component {
         this.setState({width, height, top: 0, left: 0, restore: true});
         e.stopPropagation();
     }
-    minimize(e,id, title, component) {
+
+    minimize(e, id, title, component) {
         this.props.minimize({
             ...this.state,
             ...this.props
@@ -48,11 +49,13 @@ class Modal extends React.Component {
         e.preventDefault();
         e.stopPropagation();
     }
-    close(e,id) {
+
+    close(e, id) {
         this.props.close(id);
         e.preventDefault();
         e.stopPropagation();
     }
+
     restore(e) {
         console.log("restore");
         e.preventDefault();
@@ -161,7 +164,7 @@ class Modal extends React.Component {
                     this.mouseUp(e)
                 }}>
                     <a styleName="close" onClick={e => {
-                        this.close(e,id)
+                        this.close(e, id)
                     }} title="关闭">
                         <i className="fa fa-times-circle"></i>
                     </a>
@@ -169,24 +172,18 @@ class Modal extends React.Component {
                     <a styleName="close" style={{
                         right: '42px'
                     }} onClick={e => {
-                        this.minimize(e,id, title, component)
+                        this.minimize(e, id, title, component)
                     }} title="最小化">
                         <i className="fa fa-minus-circle"></i>
                     </a>
                     <h6>
-                        <span styleName="title"><i className="fa fa-th-large"></i>&nbsp;{title}</span>
+                        <span styleName="title">
+                            <i className="fa fa-th-large"></i>&nbsp;{title}</span>
                     </h6>
                 </div>
                 <div styleName="dialogContent">{this.props.component}</div>
             </div>
         )
-    }
-}
-
-const mapStateToProps = (state, ownProps) => {
-    let ctabs = state.tabs;
-    return {
-        // tabs: [...ctabs]
     }
 }
 
@@ -210,4 +207,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CSSModules(Modal,styles, {allowMultiple: true}))
+export default connect(null, mapDispatchToProps)(CSSModules(Modal, styles, {allowMultiple: true}))

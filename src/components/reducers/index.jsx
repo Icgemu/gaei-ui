@@ -36,17 +36,3 @@ export const activeUrl = (id) => {
     id
   }
 }
-
-export const windowInfo = () => {
-  let ww = $(window).width();
-  let hh = $(window).height();
-
-  let th = $('#gaei-header').height();
-  let fh = $('#gaei-footer').height();
-  return {
-    ww,
-    hh,
-    th,
-    fh:0
-  }
-}

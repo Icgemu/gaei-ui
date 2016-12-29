@@ -7,15 +7,21 @@ class Navtab extends React.Component {
     }
 
     render() {
-      let {width,height} = this.props;
+        let {width, height} = this.props;
 
-      return (
-        <div className={styles.tabsPageContent} style={{width:width+'px',height:(height-26)+'px'}}>
-            <div className={styles.navtabPage} style={{width:width+'px',height:(height-26)+'px'}}>
-                  {this.props.children}
+        return (
+            <div className={styles.tabsPageContent} style={{
+                width: width + 'px',
+                height: (height - 26) + 'px'
+            }}>
+                <div className={styles.navtabPage} style={{
+                    width: width + 'px',
+                    height: (height - 26) + 'px'
+                }}>
+                    {this.props.children}
+                </div>
             </div>
-        </div>
-      );
+        );
     }
 }
 

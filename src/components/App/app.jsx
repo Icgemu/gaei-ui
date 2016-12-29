@@ -1,31 +1,31 @@
 import React from 'react';
 import TopHeader from '../Header/TopHeader';
-// impo gc vrt '../../../lib/B-JUI/BJUI/themes/css/style.css';
-// import '../../../lib/B-JUI/BJUI/themes/blue/core.css';
 import './default.css';
 import '../../../lib/B-JUI/BJUI/themes/css/FA/css/font-awesome.min.css';
 import styles from './app.scss';
 import Dialog from '../dialog/Dialog';
 import Taskbar from '../dialog/Taskbar';
 import Alertmsg from '../dialog/Alertmsg';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 class App extends React.Component {
+
     constructor(props) {
         super(props);
     }
 
     render() {
-      let dialogs = this.props.dialog.map(item=>{
+      let dialogs = this.props.dialog.map(option=>{
         return (
-          <Dialog option={item}/>
+          <Dialog option={option}/>
         )
       });
 
-      let alerts = this.props.alerts.map(item=>{
+      let alerts = this.props.alerts.map(option=>{
         return (
-          <Alertmsg {...item} />
+          <Alertmsg {...option} />
         )
       });
+
       return (
         <div className={styles.window}>
           <TopHeader/>
@@ -39,10 +39,9 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state,ownProps) => {
-  let diaglog = state.dialog;
-  let alerts = state.alerts;
+  let {dialog, alerts} = state
   return {
-    dialog: [...diaglog],
+    dialog: [...dialog],
     alerts:[ ...alerts]
   }
 }
@@ -50,5 +49,3 @@ const mapStateToProps = (state,ownProps) => {
 export default connect(
   mapStateToProps
 )(App)
-
-// export default App;

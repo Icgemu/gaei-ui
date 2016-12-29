@@ -1,5 +1,4 @@
-import App from "../App/app.jsx";
-// import Container1 from '../Container/Container1';
+import App from "./app";
 import {FixedColumnTableComponent,PaginationTableComponent,ResizableColumnTableComponent,CustomColumnTableComponent,TreeTableComponent} from '../pages/table/FixedColumnTable'
 import {PickerExample} from '../pages/picker/index.js'
 import {DatePickerApp} from '../pages/datepicker/deploy/app.js'

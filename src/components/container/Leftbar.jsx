@@ -8,14 +8,17 @@ class Leftbar extends React.Component {
     }
 
     render() {
-      let {width,height} = this.props;
-      return (
-        <div className={styles.leftside}>
-            <div className={styles.sidebar} style={{width:width+'px',height:height+'px'}}>
-                {this.props.children}
+        let {width, height} = this.props;
+        return (
+            <div className={styles.leftside}>
+                <div className={styles.sidebar} style={{
+                    width: width + 'px',
+                    height: height + 'px'
+                }}>
+                    {this.props.children}
+                </div>
             </div>
-        </div>
-      );
+        );
     }
 }
 
