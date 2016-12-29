@@ -48,24 +48,36 @@
     box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
 }
 
-.alertHeader {
+@mixin alertHeader($bgcolor:#4682b4, $rgb:rgba(70, 130, 180, 0.5),$tlcolor:#fff) {
     position: relative;
     padding: 0 5px;
     height: 36px;
     overflow: hidden;
-    background: #4682b4;
-    border-bottom: 1px #4682b4 solid;
+    background: $bgcolor;
+    border-bottom: 1px $bgcolor solid;
 
     h6 {
         padding: 8px 4px;
         margin: 0;
-        border-bottom: 1px dashed rgba(70, 130, 180, 0.5);
+        border-bottom: 1px dashed $rgb;
 
         .title {
-            color: #fff;
+            color: $tlcolor;
             font-size: 16px;
         }
     }
+}
+
+.alertHeadererror{
+    @include alertHeader($bgcolor:#b4464b, $rgb:rgba(180,70,75, 0.5),$tlcolor:#fff);
+}
+
+.alertHeaderinfo{
+    @include alertHeader();
+}
+
+.alertHeaderwarn{
+    @include alertHeader($bgcolor:#b47846, $rgb:rgba(180,120,70, 0.5),$tlcolor:#fff);
 }
 
 .alertContent {
