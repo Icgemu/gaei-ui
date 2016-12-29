@@ -3,6 +3,7 @@ import Leftbar from './Leftbar';
 import Navtab from './Navtab';
 import {windowInfo} from '../reducers/index';
 import styles from './container.scss'
+import {AppConfig} from '../App/AppRouteConfig1'
 class Container extends React.Component {
     constructor(props) {
         super(props);
@@ -75,15 +76,18 @@ class Container extends React.Component {
         )
       });
       // containercls = `${styles.gaeiContainer} `
+      let left = AppConfig.leftbar?(
+        <Leftbar width={sidebar} height={height}>
+          {this.props.left}
+        </Leftbar>
+      ):null;
+      let rw = AppConfig.leftbar?(width-sidebar-6):(width);
+      let rstyle = AppConfig.leftbar?{width:rw+'px',height:height+'px'}:{left:0,width:rw+'px',height:height+'px'}
       return (
         <div className={styles.gaeiContainer}
           style={{height:height+'px',width:width+'px'}}>
-
-          <Leftbar width={sidebar} height={height}>
-            {this.props.left}
-          </Leftbar>
-
-          <div className={styles.navtab} style={{width:(width-sidebar-6)+'px',height:height+'px'}}>
+          {left}
+          <div className={styles.navtab} style={rstyle}>
               <div className={styles.tabsPageHeader}>
                   <div className={styles.tabsPageHeaderContent}>
                       <ul className={styles.navTabs}>
@@ -92,7 +96,7 @@ class Container extends React.Component {
                   </div>
               </div>
 
-              <Navtab  width={width-sidebar-6} height={height}>
+              <Navtab  width={rw} height={height}>
                 {this.props.children}
               </Navtab>
           </div>

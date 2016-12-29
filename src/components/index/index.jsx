@@ -22,14 +22,14 @@ import store from './store';
 // import {EchartsApp} from '../pages/echarts/index.js'
 import Tabs from '../tabs/Tabs'
 import StatefulContainer from '../container/StatefulContainer'
-import {AppConfig} from '../App/AppRouteConfig'
+import {AppConfig} from '../App/AppRouteConfig1'
 
 const onRouteEnter = function(e,item){
   console.log("enter:"+e.location.pathname);
   let path = e.location.pathname;
   item = {path,id:item.id,title:item.title};
   store.dispatch(addTab(item));
-  store.dispatch(activeUrl(path));
+  if(AppConfig.navibar){store.dispatch(activeUrl(path))}
 }
 
 const renderRoot = function(config){
@@ -88,6 +88,45 @@ const renderNavi = function(config){
 
       return root;
     });
+  }else if (!config.leftbar) {
+
+    return config.childs.map((child,i)=>{
+      let Comp = child.naviTo
+      let DerivedContainer = ({children,...props})=>{
+        return (
+          <StatefulContainer {...props}>
+            <Comp/>
+          </StatefulContainer>
+        )
+      }
+      let root = <Route path={child.path} component={DerivedContainer} onEnter={(nextloc)=>{onRouteEnter(nextloc,{id:`${child.path}.${i}`,title:`${child.title}`})}} />
+      return  root
+    })
+  }else{
+    let left = renderLeftbar(config.path,config.childs)
+
+    let bar = [...config.childs];
+    let parentRoute = config.path
+    bar.map((group,i)=>{
+       group.childs.map(route=>{
+         route.path = parentRoute+route.path
+       })
+    })
+    let leftbar = <Tabs links={config.childs} />
+    let DerivedContainer = ({children,...props})=>{
+      return (
+        <StatefulContainer left={leftbar} {...props}>
+          {children}
+        </StatefulContainer>
+      )
+    }
+    let root = (
+      <Route path={config.path} component={DerivedContainer}>
+        {left}
+      </Route>
+    );
+
+    return root;
   }
 }
 
@@ -114,32 +153,3 @@ const renderLeftbar = function(parent,routes){
 }
 let root = renderRoot(AppConfig);
 ReactDOM.render(root,document.body);
-// ReactDOM.render((
-//   <Provider store={store}>
-//   <Router history={hashHistory}>
-//     <Route path="/" component={App}>
-//       <IndexRedirect to="/t4" />
-//       <Route path="t1" component={Container1}>
-//         <IndexRedirect to="t1"/>
-//         <Route path="t1" component={FixedColumnTableComponent} onEnter={(nextloc)=>{onRouteEnter(nextloc,{id:'t1-1',title:"固定行列表格"})}}/>
-//         <Route path="t2" component={PaginationTableComponent} onEnter={(nextloc)=>{onRouteEnter(nextloc,{id:'t1-2',title:"分页表格"})}}/>
-//         <Route path="t3" component={ResizableColumnTableComponent} onEnter={(nextloc)=>{onRouteEnter(nextloc,{id:'t1-3',title:"可变列宽表格"})}}/>
-//         <Route path="t4" component={CustomColumnTableComponent} onEnter={(nextloc)=>{onRouteEnter(nextloc,{id:'t1-4',title:"自定义行数据表格"})}}/>
-//         <Route path="t5" component={TreeTableComponent} onEnter={(nextloc)=>{onRouteEnter(nextloc,{id:'t1-5',title:"树形固表格"})}}/>
-//       </Route>
-//       <Route path="t2" component={Container1}>
-//         <IndexRedirect to="t1"/>
-//         <Route path="t1" component={PickerExample} onEnter={(nextloc)=>{onRouteEnter(nextloc,{id:'t2-1',title:"选择器"})}}/>
-//       </Route>
-//       <Route path="t3" component={Container1}>
-//         <IndexRedirect to="t1"/>
-//         <Route path="t1" component={DatePickerApp} onEnter={(nextloc)=>{onRouteEnter(nextloc,{id:'t3-1',title:"时间选择器"})}}/>
-//       </Route>
-//       <Route path="t4" component={Container1}>
-//         <IndexRedirect to="t1"/>
-//         <Route path="t1" component={EchartsApp} onEnter={(nextloc)=>{onRouteEnter(nextloc,{id:'t4-1',title:"Echarts"})}}/>
-//       </Route>
-//     </Route>
-//   </Router>
-//   </Provider>
-// ), document.body);
