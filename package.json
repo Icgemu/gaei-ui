@@ -31,6 +31,7 @@
   "devDependencies": {
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.9",
+    "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-export-extensions": "^6.8.0",
     "babel-plugin-transform-object-rest-spread": "^6.20.2",
     "babel-plugin-transform-proto-to-assign": "^6.9.0",
@@ -39,6 +40,7 @@
     "babel-preset-react": "^6.16.0",
     "bootstrap-webpack": "0.0.5",
     "css-loader": "^0.26.1",
+    "es3ify-loader": "^0.2.0",
     "exports-loader": "^0.6.3",
     "expose-loader": "^0.7.1",
     "extract-text-webpack-plugin": "^1.0.1",

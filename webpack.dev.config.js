@@ -47,6 +47,7 @@ const config = {
                 test: /\.(jsx|js)$/,
                 loaders: [
                     'react-hot',
+                    'es3ify-loader',
                     'babel?babelrc'
                 ],
                 exclude: /node_modules/

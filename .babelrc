@@ -1,4 +1,4 @@
 {
     "presets": ["react","latest"],
-    "plugins": ["transform-object-rest-spread","transform-export-extensions"]
+    "plugins": ["transform-object-rest-spread","transform-export-extensions","add-module-exports"]
 }

@@ -1,12 +1,12 @@
-import React from 'react';
-import TopHeader from '../Header/TopHeader';
-import './default.css';
-import '../../../lib/B-JUI/BJUI/themes/css/FA/css/font-awesome.min.css';
-import styles from './app.scss';
-import Dialog from '../dialog/Dialog';
-import Taskbar from '../dialog/Taskbar';
-import Alertmsg from '../dialog/Alertmsg';
-import {connect} from 'react-redux';
+import React from 'react'
+import TopHeader from '../Header/TopHeader'
+import './default.css'
+import '../../../lib/B-JUI/BJUI/themes/css/FA/css/font-awesome.min.css'
+import styles from './app.scss'
+import Dialog from '../dialog/Dialog'
+import Taskbar from '../dialog/Taskbar'
+import Alertmsg from '../dialog/Alertmsg'
+import {connect} from 'react-redux'
 class App extends React.Component {
 
     constructor(props) {

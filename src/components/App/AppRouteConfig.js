@@ -3,6 +3,7 @@ import {FixedColumnTableComponent,PaginationTableComponent,ResizableColumnTableC
 import {PickerExample} from '../pages/picker/index.js'
 import {DatePickerApp} from '../pages/datepicker/deploy/app.js'
 import {EchartsApp} from '../pages/echarts/index.js'
+import {DialogExample,AlertExample} from '../pages/DialogExample'
 
 export const  AppConfig = {
   path:"/",
@@ -31,6 +32,10 @@ export const  AppConfig = {
         ]},
         {group:'Echarts',childs:[
           {path:'v1',title:'Echarts插件',naviTo:EchartsApp}
+        ]},
+        {group:'Dialog',childs:[
+          {path:'c1',title:'Dialog控件',naviTo:DialogExample},
+          {path:'c2',title:'Alert控件',naviTo:AlertExample}
         ]}
       ],
       router:[

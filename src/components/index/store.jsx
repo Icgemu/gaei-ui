@@ -1,7 +1,7 @@
 import {createStore} from 'redux';
 import tabs from '../reducers/TabsReducers';
 
-import {AppConfig} from '../app/AppRouteConfig1'
+import {AppConfig} from '../app/AppConfig'
 
 const arr = AppConfig.navibar
     ? AppConfig.childs.map((child, i) => {

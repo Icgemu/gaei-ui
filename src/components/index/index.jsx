@@ -14,7 +14,7 @@ import store from './store'
 
 import Tabs from '../tabs/Tabs'
 import StatefulContainer from '../container/Container'
-import {AppConfig} from '../app/AppRouteConfig1'
+import {AppConfig} from '../app/AppConfig'
 
 const onRouteEnter = function(e, item) {
     let path = e.location.pathname;

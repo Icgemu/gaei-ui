@@ -3,7 +3,7 @@ import Leftbar from './Leftbar';
 import Navtab from './Navtab';
 import {connect} from 'react-redux';
 import styles from './container.scss'
-import {AppConfig} from '../app/AppRouteConfig1'
+import {AppConfig} from '../app/AppConfig'
 import {delTab} from '../reducers/index';
 class Container extends React.Component {
     constructor(props) {
