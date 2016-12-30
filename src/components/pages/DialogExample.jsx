@@ -15,10 +15,16 @@ export const DialogExample = ()=>{
 
 export const AlertExample = ()=>{
   let c = <div> 测试 </div>
-  let option = {id:1, type:'error',title:"告警",msg:"Dialog Example"}
+  let option1 = {id:1, type:'error',msg:"Dialog Example"};
+  let option2 = {id:2, type:'info',msg:"Dialog Example"};
+  let option3 = {id:3, type:'warn',msg:"Dialog Example"};
   return (
     <div>
-      <button  className="btn btn-default" onClick={e=>{alertMsg(option)}}>Alert</button>
+      <button  className="btn btn-danger" onClick={e=>{alertMsg(option1)}}>Alert</button>
+      <hr/>
+      <button  className="btn btn-primary" onClick={e=>{alertMsg(option2)}}>Alert</button>
+      <hr/>
+      <button  className="btn btn-warning" onClick={e=>{alertMsg(option3)}}>Alert</button>
     </div>
   )
 }

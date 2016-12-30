@@ -10,18 +10,19 @@ class Alertmsg extends React.Component {
         this.state = {
             top: -300,
             types: {
-                error: 'error',
-                info: 'info',
-                warn: 'warn',
-                success: 'green',
-                confirm: 'confirm'
+                error: 'danger',
+                info: 'primary',
+                warn: 'warning',
             },
             fas: {
                 error: 'fa-times-circle',
                 info: 'fa-info-circle',
                 warn: 'fa-exclamation-circle',
-                correct: 'fa-check-circle',
-                confirm: 'fa-question-circle'
+            },
+            title: {
+                error: '错误提示',
+                info: '信息提示',
+                warn: '告警提示',
             }
         };
     }
@@ -35,6 +36,9 @@ class Alertmsg extends React.Component {
                 });
             } else {
                 clearInterval(this.state.interid);
+                setTimeout(e=>{
+                  this.close(this.props.id);
+                },3000);
             }
 
         }, 2);
@@ -60,8 +64,12 @@ class Alertmsg extends React.Component {
     }
 
     render() {
-        let cls = `btn btn-${this.props.type}`;
+        let  btnType = this.state.types[this.props.type];
+        let cls = `btn btn-${btnType}`;
         let fa = `fa ${this.state.fas[this.props.type]}`;
+        let alertcls = `alert${this.props.type}`
+        let headercls = `alertHeader${this.props.type}`
+        let title = this.state.title[this.props.type];
         let btn = (
             <li>
                 <button className={cls} onClick={e => {
@@ -73,13 +81,13 @@ class Alertmsg extends React.Component {
             </li>
         )
         return (
-            <div styleName="alert" style={{
+            <div styleName={alertcls} style={{
                 top: this.state.top + 'px'
             }}>
-                <div styleName="alertHeader">
+                <div styleName={headercls}>
                     <h6>
                         <span styleName="title">
-                            <i className={fa}></i>&nbsp;{this.props.title}</span>
+                            <i className={fa}></i>&nbsp;{title}</span>
                     </h6>
                 </div>
 

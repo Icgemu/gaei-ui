@@ -35,7 +35,7 @@
     margin: 5px;
 }
 
-.alert {
+@mixin alert {
     position: absolute;
     top: 0;
     left: 50%;
@@ -43,9 +43,22 @@
     margin-left: -230px;
     width: 460px;
     background: #fff;
-    border: 1px #4682b4 solid;
-    border-radius: 1px;
     box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+}
+
+.alerterror {
+    @include alert;
+    border: 1px #b4464b solid;
+}
+
+.alertinfo {
+    @include alert;
+    border: 1px #4682b4 solid;
+}
+
+.alertwarn {
+    @include alert;
+    border: 1px #b47846 solid;
 }
 
 @mixin alertHeader($bgcolor:#4682b4, $rgb:rgba(70, 130, 180, 0.5),$tlcolor:#fff) {

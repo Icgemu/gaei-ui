@@ -57,7 +57,7 @@ const config = {
             {
                 test: /\.scss$/,
                 loader: ExtractTextPlugin
-                .extract('style','css?modules&localIdentName=[name]__[local]___[hash:base64:5]!resolve-url-loader!postcss-loader','sass-loader')
+                .extract('style','css?modules&localIdentName=[name]__[local]___[hash:base64:5]!resolve-url-loader!postcss-loader!sass-loader')
             },
             {
                 test: /\.css$/,
