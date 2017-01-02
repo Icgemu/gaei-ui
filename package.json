@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-polyfill": "^6.20.0",
     "bootstrap": "^3.3.7",
     "classnames": ">=2.0.0",
     "echarts": "^3.3.2",
